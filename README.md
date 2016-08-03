@@ -20,3 +20,6 @@ This app has allowed me to practice many topics I have learnt in recent months, 
 * OAuth
 * Hapi
 * Nodemon
+* Redis
+* React
+* Redux
