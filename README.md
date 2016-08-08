@@ -12,6 +12,7 @@ Essentially I was sick of always having the results of sports ruined for me on T
 
 * To allow users to set lists on Twitter.
 * To allow users to hide lists or individuals on Twitter for a period of chosen time.
+* To allow users to hide tweets with a particular word or phrase.
 
 ### How?
 
@@ -19,7 +20,9 @@ This app has allowed me to practice many topics I have learnt in recent months, 
 
 * OAuth
 * Hapi
-* Nodemon
+* Node/Nodemon
 * Redis
 * React
 * Redux
+* SASS
+* API
