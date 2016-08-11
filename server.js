@@ -4,66 +4,74 @@ const Inert = require('inert');
 const Env2 = require('env2')('config.env');
 const querystring = require('querystring');
 const request = require('request');
+const Bell = require('bell');
+const crypto = require('crypto');
+var creds;
 
 const server = new Hapi.Server()
 server.connection({port: process.env.BASE_URL});
 
-server.register(Inert, (err) => {
+server.register([Inert, Bell], (err) => {
+  server.auth.strategy('twitter', 'bell', {
+        provider: 'twitter',
+        password: 'cookie_encryption_password_secure',
+        clientId: process.env.CONSUMER_KEY,
+        clientSecret: process.env.CONSUMER_SECRET,
+        isSecure: false     // Terrible idea but required if not using HTTPS especially if developing locally
+    });
+
   server.route({
     method: 'GET',
     path: '/',
     handler: (req, reply) => {
       const path = Path.join(__dirname, 'public', 'index.html');
-      reply.file(path);
+
+      var consumer_key = `oauth_consumer_key=${process.env.CONSUMER_KEY}`
+      var nonce = "oauth_nonce=kYjzVBB8Y0ZFewxSWtgrWovY3uYSQ2pdetgmZeNu2VS4cg"
+      var method = "oauth_signature_method=HMAC-SHA1"
+      var timestamp = `oauth_timestamp=${Date.now()}`
+      var token = `oauth_token=${creds.token}`
+      var version = "oauth_version=2.0"
+      var uri = "https://api.twitter.com/1.1/statuses/home_timeline.json";
+
+      var parameterString = 'include_entities=true&' + consumer_key + '&' + nonce + '&' + method + '&' + timestamp + '&' + token + '&' + version;
+      var signatureBaseString = 'GET&' + encodeURIComponent(uri) + '&' + encodeURIComponent(parameterString);
+      var signingKey = encodeURIComponent(`${process.env.CONSUMER_SECRET}`) + '&' + encodeURIComponent(`${process.env.ACCESS_TOKEN_SECRET}`);
+      var hash = crypto.createHmac('sha1', signingKey).update(signatureBaseString).digest('base64');
+
+      const options = {
+        uri: uri,
+        headers: {
+                Authorization:
+                `OAuth ${consumer_key},${nonce},oauth_signature=${hash},${method},${timestamp},${token},${version}`
+            }
+      }
+
+      request(options ,(err, result) =>{
+        console.log(err, result);
+        reply(result);
+      })
+      // reply.file(path);
     }
   })
 
-    server.route({
-      method: 'GET',
-      path: '/login',
-      handler: (req, reply) => {
-        var query = querystring.stringify({
-          client_id: process.env.OWNER_ID,
-          redirect_uri: process.env.REDIRECT_URI,
-        })
-        //reply.redirect('https://api.twitter.com/oauth/authorize' + '?' + query);
+  server.route({
+        method: ['GET', 'POST'], // Must handle both GET and POST
+        path: '/login',          // The callback endpoint registered with the provider
+        config: {
+            auth: 'twitter',
+            handler: function (request, reply) {
 
-        // const options = {
-        //   url: 'https://api.twitter.com/oauth/request_token',
-        //   method: 'POST',
-        //   headers: {
-        //     Authorization: `OAuth oauth_nonce=${process.env.CONSUMER_SECRET},oauth_callback=${process.env.REDIRECT_URI},oauth_signature_method=HMAC-SHA1,oauth_consumer_key=${process.env.CONSUMER_KEY},oauth_version=2.0`
-        //   }
-        // }
-        var OAuth = require('oauth');
+                if (!request.auth.isAuthenticated) {
+                    return reply('Authentication failed due to: ' + request.auth.error.message);
+                }
+                creds = request.auth.credentials;
+                // console.log(request.auth.credentials);
+                return reply.redirect('/');
+            }
+        }
+    });
 
-
-     var OAuth2 = OAuth.OAuth2;
-     var twitterConsumerKey = process.env.CONSUMER_KEY;
-     var twitterConsumerSecret = process.env.CONSUMER_SECRET;
-     var oauth2 = new OAuth2(twitterConsumerKey,
-       twitterConsumerSecret,
-       'https://api.twitter.com/',
-       null,
-       'oauth2/token',
-       null);
-     oauth2.getOAuthAccessToken(
-       '',
-       {'grant_type':'client_credentials'},
-       function (e, access_token, refresh_token, results){
-       console.log('bearer: ',access_token);
-     })
-        // request(options, function (error, response, body) {
-        //   if (!error && response.statusCode == 200) {
-        //     reply(body);
-        //   } else {
-        //     console.log(response);
-        //     reply(error)
-        //   }
-        // })
-
-      }
-    })
 
   server.start((err) => {
       if (err) {
