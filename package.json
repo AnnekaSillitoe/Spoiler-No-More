@@ -10,14 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bell": "^8.0.1",
     "env2": "^2.1.0",
     "hapi": "^13.5.0",
     "inert": "^4.0.1",
+    "node-twitter-api": "^1.7.4",
     "nodemon": "^1.10.0",
     "oauth": "^0.9.14",
     "path": "^0.12.7",
-    "querystring": "^0.2.0",
-    "request": "^2.74.0"
+    "querystring": "^0.2.0"
   }
 }
