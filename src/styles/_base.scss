@@ -1,0 +1,53 @@
+@mixin smoothing{
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+}
+
+@mixin karla{
+  font-family: 'Karla', sans-serif;
+  font-weight: normal;
+}
+
+@mixin montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: normal;
+}
+
+@mixin shadow {
+  -webkit-box-shadow: 7px 7px 6px 0px rgba(39,17,51,1);
+  -moz-box-shadow: 7px 7px 6px 0px rgba(39,17,51,1);
+  box-shadow: 7px 7px 6px 0px rgba(39,17,51,1);
+}
+
+body {
+  background-color: $purple-main;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 40%;
+  font-size: 6em;
+  @include karla;
+  @include smoothing;
+  color: $purple-light;
+}
+
+.logo {
+  margin: 170px auto 0 auto;
+  height: 178px;
+  display: block;
+}
+
+button {
+  border: none;
+  margin: 120px auto 0 auto;
+  font-size: 3.5em;
+  padding: 1em 0.8em;
+  border-radius: 25px;
+  @include karla;
+  @include smoothing;
+  display: block;
+  background-color: $purple-light;
+  color: $purple-dark;
+  @include shadow;
+}
