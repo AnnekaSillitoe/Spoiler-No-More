@@ -23,6 +23,5 @@ This app has allowed me to practice many topics I have learnt in recent months, 
 * Node/Nodemon
 * Redis
 * React
-* Redux
 * SASS
 * API
