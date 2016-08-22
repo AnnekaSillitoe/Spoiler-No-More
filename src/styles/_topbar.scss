@@ -1,0 +1,31 @@
+
+.wrapper{
+  left: 0;
+  top: 0;
+  height:100%;
+  position:fixed;
+  background-color: white;
+  width: 100%;
+}
+
+.top-bar {
+  background-color: $purple-main;
+  height: 6%;
+  width: 100%;
+  margin:0px;
+}
+
+.search-icon {
+  height: 4em;
+  width: 4em;
+}
+
+.timeout-icon {
+  height: 4em;
+  width: 4em;
+}
+
+.speech-icon {
+  height: 4em;
+  width: 4em;
+}

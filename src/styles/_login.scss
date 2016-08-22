@@ -1,0 +1,44 @@
+@mixin shadow {
+  -webkit-box-shadow: 7px 7px 6px 0px rgba(39,17,51,1);
+  -moz-box-shadow: 7px 7px 6px 0px rgba(39,17,51,1);
+  box-shadow: 7px 7px 6px 0px rgba(39,17,51,1);
+}
+
+
+.wrapper{
+  left: 0;
+  top: 0;
+  height:100%;
+  position:fixed;
+  background-color: $purple-main;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 40%;
+  font-size: 6em;
+  color: $purple-light;
+  @include karla;
+  @include smoothing;
+}
+
+.twitter-logo {
+  margin: 170px auto 0 auto;
+  height: 178px;
+  display: block;
+}
+
+button {
+  border: none;
+  margin: 120px auto 0 auto;
+  font-size: 3.5em;
+  padding: 1em 0.8em;
+  border-radius: 25px;
+  display: block;
+  background-color: $purple-light;
+  color: $purple-dark;
+  @include karla;
+  @include smoothing;
+  @include shadow;
+}

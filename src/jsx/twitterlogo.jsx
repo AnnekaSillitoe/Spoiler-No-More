@@ -4,7 +4,7 @@ class TwitterLogo extends React.Component{
   render(){
     return (
       <svg
-         className="logo"
+         className="twitter-logo"
          xmlns="http://www.w3.org/2000/svg"
          version="1.1"
          id="svg3626"

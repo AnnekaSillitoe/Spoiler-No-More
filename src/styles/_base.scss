@@ -13,41 +13,20 @@
   font-weight: normal;
 }
 
-@mixin shadow {
-  -webkit-box-shadow: 7px 7px 6px 0px rgba(39,17,51,1);
-  -moz-box-shadow: 7px 7px 6px 0px rgba(39,17,51,1);
-  box-shadow: 7px 7px 6px 0px rgba(39,17,51,1);
-}
+$color-icons: #a0a2a3;
 
-body {
-  background-color: $purple-main;
-}
+$green-main: rgba( 38,95,95,0.9);
+$green-light: rgba(102,153,153,1);
+$green-dark: rgba(  0, 51, 51,1);
 
-h1 {
-  text-align: center;
-  margin-top: 40%;
-  font-size: 6em;
-  @include karla;
-  @include smoothing;
-  color: $purple-light;
-}
+$purple-main: rgba( 73, 55, 83, 0.9);
+$purple-light: rgba(174,133,200,1);
+$purple-dark: rgba( 39, 17, 51,1);
 
-.logo {
-  margin: 170px auto 0 auto;
-  height: 178px;
-  display: block;
-}
+$pink-main: rgba(128, 52, 95,0.9);
+$pink-light: rgba(224, 150, 192,1);
+$pink-dark: rgba( 67,  6, 41,1);
 
-button {
-  border: none;
-  margin: 120px auto 0 auto;
-  font-size: 3.5em;
-  padding: 1em 0.8em;
-  border-radius: 25px;
-  @include karla;
-  @include smoothing;
-  display: block;
-  background-color: $purple-light;
-  color: $purple-dark;
-  @include shadow;
-}
+$blue-main: rgba( 40, 77,123,1);
+$blue-light: rgba(120,155,200,1);
+$blue-dark: rgba(  6, 34, 70,1);
