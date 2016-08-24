@@ -1,6 +1,6 @@
 import React from 'react';
 
-class TimeoutLogo extends React.Component{
+class TimeoutIcon extends React.Component{
   render(){
     return (
       <svg
@@ -28,4 +28,4 @@ class TimeoutLogo extends React.Component{
   }
 }
 
-export default TimeoutLogo;
+export default TimeoutIcon;

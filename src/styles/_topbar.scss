@@ -1,5 +1,4 @@
-
-.wrapper{
+.topbar {
   left: 0;
   top: 0;
   height:100%;
@@ -12,20 +11,27 @@
   background-color: $purple-main;
   height: 6%;
   width: 100%;
+  padding: 1%;
   margin:0px;
 }
 
 .search-icon {
-  height: 4em;
-  width: 4em;
+  height: 80%;
+  width: 10%;
+  margin-left: 2%;
+  margin-top: 1%;
 }
 
 .timeout-icon {
-  height: 4em;
-  width: 4em;
+  height: 80%;
+  width: 10%;
+  margin-left: 55%;
+  margin-top: 1%;
 }
 
 .speech-icon {
-  height: 4em;
-  width: 4em;
+  height: 80%;
+  width: 10%;
+  margin-left: 10%;
+  margin-top: 1%;
 }

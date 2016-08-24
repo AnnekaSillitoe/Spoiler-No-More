@@ -1,6 +1,6 @@
 import React from 'react';
 
-class SpeechLogo extends React.Component{
+class SpeechIcon extends React.Component{
   render(){
     return (
       <svg
@@ -27,4 +27,4 @@ class SpeechLogo extends React.Component{
   }
 }
 
-export default SpeechLogo;
+export default SpeechIcon;

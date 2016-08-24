@@ -1,6 +1,6 @@
 import React from 'react';
 
-class SearchLogo extends React.Component{
+class SearchIcon extends React.Component{
   render(){
     return (
       <svg
@@ -21,4 +21,4 @@ class SearchLogo extends React.Component{
   }
 }
 
-export default SearchLogo;
+export default SearchIcon;

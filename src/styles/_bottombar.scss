@@ -1,0 +1,51 @@
+.bottombar {
+  left: 0;
+  bottom: 0;
+  position:fixed;
+  background-color: white;
+  width: 100%;
+}
+
+.bottom-bar {
+  background-color: $purple-main;
+  height: 6%;
+  width: 100%;
+  padding: 1%;
+  margin:0px;
+}
+
+.home-icon {
+  height: 70%;
+  width: 40%;
+  padding: 0 30%;
+}
+
+.lists-icon {
+  height: 70%;
+  width: 40%;
+  padding: 0 30%;
+}
+
+.profile-icon {
+  height: 70%;
+  width: 40%;
+  padding: 0 30%;
+}
+
+.message-icon {
+  height: 70%;
+  width: 40%;
+  padding: 0 30%;
+}
+
+.icon-box {
+  width: 25%;
+  display: inline-block;
+}
+
+.p-bottom-bar {
+  color: $purple-light;
+  font-size: 2.5em;
+  margin: 0;
+  text-align: center;
+}

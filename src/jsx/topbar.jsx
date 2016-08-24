@@ -1,15 +1,15 @@
 import React from 'react';
-import SearchLogo from './searchlogo.jsx';
-import TimeoutLogo from './timeoutlogo.jsx';
-import SpeechLogo from './speechlogo.jsx';
+import SearchIcon from './searchicon.jsx';
+import TimeoutIcon from './timeouticon.jsx';
+import SpeechIcon from './speechicon.jsx';
 
 class TopBar extends React.Component{
   render(){
     return (
         <div className = "top-bar">
-          <SearchLogo palette={{search:'rgba(174,133,200,1)'}}/>
-          <TimeoutLogo palette={{timeout:'rgba(174,133,200,1)'}}/>
-          <SpeechLogo palette={{speech:'rgba(174,133,200,1)'}}/>
+              <SearchIcon  palette={{search:'rgba(174,133,200,1)'}}/>
+              <TimeoutIcon palette={{timeout:'rgba(174,133,200,1)'}}/>
+              <SpeechIcon palette={{speech:'rgba(174,133,200,1)'}}/>
         </div>
     )
   }
