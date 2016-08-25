@@ -1,0 +1,39 @@
+$display-box: flex;
+
+.top-text {
+    left: 0;
+    margin-top: 120px;
+    background-color: white;
+    width: 100%;
+    display: flex;
+}
+
+.select-colour {
+  color: $purple-light;
+  text-align: center;
+  font-size: 3em;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+.account-text {
+  font-size: 3em;
+  color: #271133;
+  margin-left: 70px;
+  margin-top: 30px;
+}
+
+.account-box {
+  display: $display-box;
+  padding: 0 0px 40px 40px;
+  border-bottom: $border-line;
+}
+
+.image-square {
+  height: 150px;
+  width: 150px;
+}
+
+img {
+  margin-top: 20px;
+}
