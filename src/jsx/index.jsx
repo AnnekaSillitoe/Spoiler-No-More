@@ -6,6 +6,7 @@ import Home from './home.jsx';
 import Login from './login.jsx';
 import Colour from './colour.jsx';
 import Accounts from './accounts.jsx';
+import Lists from './lists.jsx';
 
 const routes = (
   <Route path='/'>
@@ -13,6 +14,7 @@ const routes = (
     <Route path='/login'component = { Login }/>
     <Route path='/display'component = { Colour }/>
     <Route path='/accounts'component = { Accounts }/>
+    <Route path='/lists'component = { Lists }/>
   </Route>
 )
 
