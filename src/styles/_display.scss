@@ -1,21 +1,77 @@
+@mixin square($color) {
+  height: 150px;
+  width: 150px;
+  background-color: $color;
+}
+
+$display-box: flex;
+
 .top-text {
     left: 0;
-    margin-top: 130px;
+    margin-top: 120px;
     background-color: white;
     width: 100%;
+    display: flex;
 }
 
 .back-arrow {
   position: relative;
   height: 10%;
   width: 10%;
-  display: inline;
 }
 
 .select-colour {
-  font
   color: $purple-light;
-  font-size: 200px;
-  margin: 0;
-  display: inline;
+  text-align: center;
+  font-size: 3em;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+.blue-square {
+	@include square($blue-main);
+  display: inline-block;
+}
+
+.green-square {
+	@include square($green-main);
+}
+
+.pink-square {
+	@include square($pink-main);
+}
+
+.purple-square {
+	@include square($purple-main);
+}
+
+.colour-text {
+  font-size: 3em;
+  color: #271133;
+  margin-left: 70px;
+  margin-top: 30px;
+}
+
+.blue-box {
+  display: $display-box;
+  padding: 0 0px 40px 40px;
+  border-bottom: $border-line;
+}
+
+.green-box {
+  display: $display-box;
+  padding: 40px 0 40px 40px;
+  border-bottom: $border-line;
+}
+
+.pink-box {
+  display: $display-box;
+  padding: 40px 0 40px 40px;
+  border-bottom: $border-line;
+}
+
+.purple-box {
+  display: $display-box;
+  padding: 40px 0 40px 40px;
+  border-bottom: $border-line;
 }
