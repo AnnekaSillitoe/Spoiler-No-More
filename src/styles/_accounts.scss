@@ -1,11 +1,8 @@
-$display-box: flex;
-
 .top-text {
     left: 0;
-    margin-top: 120px;
+    margin-top: 140px;
     background-color: white;
     width: 100%;
-    display: flex;
 }
 
 .select-colour {
@@ -19,19 +16,20 @@ $display-box: flex;
 .account-text {
   font-size: 3em;
   color: #271133;
-  margin-left: 70px;
-  margin-top: 30px;
+  margin: 70px 50px 0px 70px;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .account-box {
-  display: $display-box;
-  padding: 0 0px 40px 40px;
-  border-bottom: $border-line;
+  padding: 5px 0px 25px 40px;
+  border-bottom: 2px #a0a2a3 solid;
 }
 
 .image-square {
   height: 150px;
   width: 150px;
+  display: inline-block;
 }
 
 img {

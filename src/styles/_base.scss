@@ -32,3 +32,8 @@ $blue-light: rgba(120,155,200,1);
 $blue-dark: rgba(  6, 34, 70,1);
 
 $border-line: 2px #a0a2a3 solid;
+
+button {
+  background-color: transparent;
+  border: none;
+}
