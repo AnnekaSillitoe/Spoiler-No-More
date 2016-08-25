@@ -1,0 +1,37 @@
+.topbar {
+  left: 0;
+  top: 0;
+  height:6%;
+  position:fixed;
+  background-color: white;
+  width: 100%;
+}
+
+.top-bar {
+  background-color: $purple-main;
+  height: 100%;
+  width: 100%;
+  padding: 1%;
+  margin:0px;
+}
+
+.search-icon {
+  height: 80%;
+  width: 10%;
+  margin-left: 2%;
+  margin-top: 1%;
+}
+
+.timeout-icon {
+  height: 80%;
+  width: 10%;
+  margin-left: 55%;
+  margin-top: 1%;
+}
+
+.speech-icon {
+  height: 80%;
+  width: 10%;
+  margin-left: 10%;
+  margin-top: 1%;
+}
