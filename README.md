@@ -22,6 +22,9 @@ This app has allowed me to practice many topics I have learnt in recent months, 
 * Hapi
 * Node/Nodemon
 * Redis
-* React
+* React/React-Dom/React-Router
 * SASS
 * API
+* Babel/Babelify
+* Env2
+* Watchify
