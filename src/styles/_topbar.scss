@@ -16,22 +16,31 @@
 }
 
 .search-icon {
-  height: 80%;
-  width: 10%;
-  margin-left: 2%;
-  margin-top: 1%;
+  width: 100%;
+  height: inherit;
 }
 
 .timeout-icon {
-  height: 80%;
-  width: 10%;
-  margin-left: 55%;
-  margin-top: 1%;
+  width: 100%;
+  height: inherit;
 }
 
 .speech-icon {
-  height: 80%;
+  width: 100%;
+  height: inherit;
+}
+
+.top-button-1 {
   width: 10%;
-  margin-left: 10%;
-  margin-top: 1%;
+  height: 100%;
+  display: inline-block;
+  margin-left: 2%;
+}
+
+.top-button-2 {
+  width: 10%;
+  height: 100%;
+  float: right;
+  margin-right: 3%;
+  display: inline-block;
 }
