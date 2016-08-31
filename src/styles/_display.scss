@@ -16,8 +16,8 @@ $display-box: flex;
 
 .back-arrow {
   position: relative;
-  height: 10%;
-  width: 10%;
+  height: 100%;
+  width: 100%;
 }
 
 .select-colour {
@@ -74,4 +74,11 @@ $display-box: flex;
   display: $display-box;
   padding: 40px 0 40px 40px;
   border-bottom: $border-line;
+}
+
+.arrow-button {
+  width: 10%;
+  height: 100%;
+  display: inline-block;
+  margin-left: 2%;
 }

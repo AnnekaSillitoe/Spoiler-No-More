@@ -1,0 +1,42 @@
+.user-text {
+  display: inline-block;
+  width: 75%;
+  margin-left: 23px;
+  position: absolute;
+}
+
+.username {
+  font-size: 3em;
+    color: #271133;
+    float: left;
+    margin: 0;
+}
+
+.at-username {
+  font-size: 2em;
+    color: #ae85c8;
+    float: right;
+    margin: 0;
+}
+
+.profile-text {
+  display: inline-block;
+  width: 77%;
+  margin-left: 23px;
+  position: absolute;
+  padding-top: 45px;
+}
+
+html,body {padding:0; margin:0;}
+
+.test-text {
+  width: 60%;
+  font-size: 2em;
+  display: inline-block;
+}
+
+.following-user-icon {
+  float: right;
+  display: inline-block;
+  padding-top: 30px;
+}

@@ -11,7 +11,9 @@ class Colour extends React.Component{
             <TopBar/>
         </div>
         <div className="top-text">
-          <BackArrow palette={{backarrow:'#a0a2a3'}}/>
+          <button className="arrow-button">
+            <BackArrow palette={{backarrow:'#a0a2a3'}}/>
+          </button>
           <p className="select-colour">Select which colour you’d like to use:</p>
         </div>
         <div className="blue-box">
