@@ -1,39 +1,53 @@
 import React from 'react';
 import TopBar from './topbar.jsx';
 import BottomBar from './bottombar.jsx';
+import TopSliderLists from './topsliderlists.jsx';
+import { Link } from 'react-router';
 
 class Lists extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      lists: []
+    }
+  }
+
+  componentWillMount() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      console.log(xhr.response);
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log(xhr.response);
+        this.setState({
+          lists: JSON.parse(xhr.response)
+        });
+      }
+    }.bind(this);
+    xhr.open("GET", "/listsowned");
+    xhr.send();
+  }
+
   render(){
-    return (
-      <div>
-        <div className="topbar">
-            <TopBar/>
-        </div>
-        <div className="top-slider">
-          <button className="lists-following">Lists</button>
-          <button className="lists-following">Following</button>
-        </div>
+    var listsowned = this.state.lists.map(e => {
+      return (
         <div className="account-box">
           <div className="image-square">
             <img src="https://pbs.twimg.com/profile_images/664807873713725440/r8ZAg5lD.jpg" height="150px" width="150px"></img>
           </div>
-          <button className="account-text">@Basketball2016</button>
+          <button className="account-text">{e.name}<Link to={e.link}></Link></button>
         </div>
-        <div className="account-box">
-          <div className="image-square">
-            <img src="https://pbs.twimg.com/profile_images/668655568601546752/HGPdOQrB.png" height="150px" width="150px"></img>
+      )
+    });
+
+
+    return (
+      <div>
+        <TopBar/>
+        <TopSliderLists/>
+          <div className="friends-list">
+            {listsowned}
           </div>
-          <button className="account-text">@WWE</button>
-        </div>
-        <div className="account-box">
-          <div className="image-square">
-            <img src="https://pbs.twimg.com/profile_images/574499541212270592/FpXDipiC.jpeg" height="150px" width="150px"></img>
-          </div>
-          <button className="account-text">@FormulaOneLover</button>
-        </div>
-          <div className="bottombar">
-          <BottomBar/>
-        </div>
+        <BottomBar/>
       </div>
     )
   }

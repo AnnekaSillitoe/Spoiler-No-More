@@ -15,15 +15,15 @@
 
 $color-icons: #a0a2a3;
 
-$green-main: rgba( 38,95,95,0.9);
+$green-main: rgba( 38,95,95,1);
 $green-light: rgba(102,153,153,1);
 $green-dark: rgba(  0, 51, 51,1);
 
-$purple-main: rgba( 73, 55, 83, 0.9);
+$purple-main: rgba( 73, 55, 83, 1);
 $purple-light: rgba(174,133,200,1);
 $purple-dark: rgba( 39, 17, 51,1);
 
-$pink-main: rgba(128, 52, 95,0.9);
+$pink-main: rgba(128, 52, 95,1);
 $pink-light: rgba(224, 150, 192,1);
 $pink-dark: rgba( 67,  6, 41,1);
 
@@ -36,4 +36,13 @@ $border-line: 2px #a0a2a3 solid;
 button {
   background-color: transparent;
   border: none;
+}
+
+html,body {
+  padding:0;
+  margin:0;
+}
+
+a {
+  text-decoration: none;
 }

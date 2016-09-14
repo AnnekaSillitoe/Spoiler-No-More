@@ -3,20 +3,21 @@
   width: 75%;
   margin-left: 23px;
   position: absolute;
+  padding-top: 10px;
 }
 
 .username {
   font-size: 3em;
-    color: #271133;
-    float: left;
-    margin: 0;
+  color: #271133;
+  float: left;
+  margin: 0;
 }
 
 .at-username {
   font-size: 2em;
-    color: #ae85c8;
-    float: right;
-    margin: 0;
+  color: #ae85c8;
+  float: right;
+  margin: 0;
 }
 
 .profile-text {
@@ -27,16 +28,22 @@
   padding-top: 45px;
 }
 
-html,body {padding:0; margin:0;}
-
-.test-text {
-  width: 60%;
+.profile-user-text {
+  width: 82%;
   font-size: 2em;
   display: inline-block;
+  color: $purple-main;
+  overflow: hidden;
+  height: 3.6em;
 }
 
 .following-user-icon {
   float: right;
   display: inline-block;
   padding-top: 30px;
+}
+
+.friends-list {
+  margin-bottom: 16%;
+  padding-top: 24%;
 }

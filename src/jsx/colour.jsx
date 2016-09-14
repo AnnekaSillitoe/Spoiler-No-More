@@ -7,9 +7,7 @@ class Colour extends React.Component{
   render(){
     return (
       <div>
-        <div className="topbar">
-            <TopBar/>
-        </div>
+        <TopBar/>
         <div className="top-text">
           <button className="arrow-button">
             <BackArrow palette={{backarrow:'#a0a2a3'}}/>
@@ -32,9 +30,7 @@ class Colour extends React.Component{
           <div className="purple-square"></div>
           <button className="colour-text">Purple</button>
         </div>
-          <div className="bottombar">
           <BottomBar/>
-        </div>
       </div>
     )
   }

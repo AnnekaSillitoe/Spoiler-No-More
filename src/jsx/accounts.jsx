@@ -6,9 +6,7 @@ class Accounts extends React.Component{
   render(){
     return (
       <div>
-        <div className="topbar">
-            <TopBar/>
-        </div>
+        <TopBar/>
         <div className="top-text">
           <p className="select-colour">Select which account you'd like to sign in with:</p>
         </div>
@@ -30,9 +28,7 @@ class Accounts extends React.Component{
           </div>
           <button className="account-text">@FormulaOneLover</button>
         </div>
-          <div className="bottombar">
           <BottomBar/>
-        </div>
       </div>
     )
   }
