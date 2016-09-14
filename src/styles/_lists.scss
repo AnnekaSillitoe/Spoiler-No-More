@@ -2,17 +2,19 @@
   font-size: 3em;
   color: $purple-dark;
   width: 40%;
-  padding: 15px 0px;
+  padding: 21px 0px;
   border-bottom: 2px solid $purple-dark;
 }
 
 .top-slider {
-    left: 0;
-    margin-top: 140px;
-    background-color: white;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 25px;
+  left: 0;
+  margin-top: 122px;
+  background-color: white;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 25px;
+  position: fixed;
+  z-index: 100;
 }
 
 .lists-following:first-of-type {

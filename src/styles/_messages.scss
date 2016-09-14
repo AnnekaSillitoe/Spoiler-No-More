@@ -1,0 +1,27 @@
+.user-heading {
+  width: 95%;
+  position: absolute;
+}
+
+.user-box {
+  padding: 5px 0px 15px 20px;
+  border-bottom: 2px #a0a2a3 solid;
+  width: 96%;
+  margin-left: 1%;
+  padding-top: 24%;
+}
+
+.user-image {
+  height: 150px;
+  width: 150px;
+  display: inline-block;
+  padding-top: 40px;
+}
+
+.messages-user-text {
+  width: 90%;
+  margin-bottom: 0px;
+  font-size: 2em;
+  display: inline-block;
+  color: rgba(73, 55, 83, 0.9);
+}

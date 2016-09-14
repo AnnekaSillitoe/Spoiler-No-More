@@ -7,7 +7,7 @@ class Login extends React.Component{
       <div className = 'wrapper'>
         <h1>Spoiler No-More</h1>
         <TwitterLogo palette={{twitter: 'rgba(174,133,200,1)'}}/>
-        <button className = "btn">Sign in with Twitter</button>
+        <a href="/twitterlogin"><button className = "btn">Sign in with Twitter</button></a>
       </div>
     )
   }
