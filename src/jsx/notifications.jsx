@@ -3,11 +3,11 @@ import TopBar from './topbar.jsx';
 import BottomBar from './bottombar.jsx';
 import TopSliderMessages from './topslidermessages.jsx';
 
-class Messages extends React.Component{
+class Notifications extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      dms: []
+      rts: []
     }
   }
 
@@ -16,16 +16,16 @@ class Messages extends React.Component{
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
         this.setState({
-          dms: JSON.parse(xhr.response)
+          rts: JSON.parse(xhr.response)
         });
       }
     }.bind(this);
-    xhr.open("GET", "/dms");
+    xhr.open("GET", "/rts");
     xhr.send();
   }
 
   render(){
-    var direct_messages = this.state.dms.map(e => {
+    var retweets = this.state.rts.map(e => {
       return (
         <div className="user-box">
           <div className="user-heading">
@@ -47,7 +47,7 @@ class Messages extends React.Component{
         <TopBar/>
         <TopSliderMessages/>
         <div className="friends-list">
-          {direct_messages}
+          {retweets}}
         </div>
         <BottomBar/>
       </div>
@@ -55,4 +55,4 @@ class Messages extends React.Component{
   }
 }
 
-export default Messages;
+export default Notifications;

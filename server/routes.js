@@ -49,7 +49,7 @@ module.exports = [
     method: 'GET',
     path: '/returndata',
     handler: (req, reply) => {
-      twitter.getTimeline("home", {count:10}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, function(error, data, response) {
+      twitter.getTimeline("home", {count:800}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, function(error, data, response) {
         if (error) {
           console.log(error);
         } else {
@@ -99,7 +99,30 @@ module.exports = [
           data = data.lists.map(el => {
             return {
               name: el.name,
-              link: el.uri
+              link: el.uri,
+              slug: el.slug,
+              id: el.user.id_str,
+            };
+          });
+          reply(data);
+        }
+      });
+    }
+  },
+  {
+    method: 'GET',
+    path: '/listmembersall/{id}/{slug}',
+    handler: (req, reply) => {
+      twitter.lists("members", {slug: req.params.slug, owner_id: req.params.id}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, function(error, data, response) {
+        if (error) {
+          console.log(error);
+        } else {
+          data = data.users.map(el => {
+            return {
+              name: el.name,
+              screen_name: el.screen_name,
+              text: el.description,
+              profile_image: el.profile_image_url
             };
           });
           reply(data);
@@ -142,15 +165,15 @@ module.exports = [
         if (error) {
           console.log(error);
         } else {
+          data = data.map(el => {
+            return {
+              text: el.text,
+              name: el.user.name,
+              screen_name: el.user.screen_name,
+              profile_image: el.user.profile_image_url
+            };
+          });
           reply(data);
-          // data = data.map(el => {
-          //   return {
-          //     text: el.text,
-          //     name: el.recipient.name,
-          //     screen_name: el.recipient.screen_name,
-          //     profile_image: el.recipient.profile_image_url
-          //   };
-          // });
           // const dataObject = {};
           // for (var i = 0; i < data.length; i++) {
           //   if (!dataObject[data[i].name]) {
@@ -177,6 +200,7 @@ function formatTweet(tweet) {
     name: tweet.user.name,
     username: tweet.user.screen_name,
     profileImage: tweet.user.profile_image_url,
+    time: tweet.created_at,
     image: getMedia(tweet).image,
     video: getMedia(tweet).video,
   };

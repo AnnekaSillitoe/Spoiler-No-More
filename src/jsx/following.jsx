@@ -16,9 +16,7 @@ class Following extends React.Component{
   componentWillMount() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
-      console.log(xhr.response);
       if (xhr.readyState === 4 && xhr.status === 200) {
-        console.log(xhr.response);
         this.setState({
           friends: JSON.parse(xhr.response)
         });
