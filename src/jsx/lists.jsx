@@ -15,9 +15,7 @@ class Lists extends React.Component{
   componentWillMount() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
-      console.log(xhr.response);
       if (xhr.readyState === 4 && xhr.status === 200) {
-        console.log(xhr.response);
         this.setState({
           lists: JSON.parse(xhr.response)
         });
@@ -34,7 +32,7 @@ class Lists extends React.Component{
           <div className="image-square">
             <img src="https://pbs.twimg.com/profile_images/664807873713725440/r8ZAg5lD.jpg" height="150px" width="150px"></img>
           </div>
-          <button className="account-text">{e.name}<Link to={e.link}></Link></button>
+          <button className="account-text"><Link to={"/listmembers/" + e.id + '/' + e.slug}>{e.name}</Link></button>
         </div>
       )
     });
