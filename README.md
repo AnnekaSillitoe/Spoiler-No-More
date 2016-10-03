@@ -1,6 +1,4 @@
-# Twitter Hider App
-
-## Getting Started
+# Twitter Hider App - Spoiler No More
 
 ### What?
 
