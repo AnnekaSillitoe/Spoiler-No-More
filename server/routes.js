@@ -170,7 +170,8 @@ module.exports = [
               text: el.text,
               name: el.user.name,
               screen_name: el.user.screen_name,
-              profile_image: el.user.profile_image_url
+              profile_image: el.user.profile_image_url,
+              time: el.created_at
             };
           });
           reply(data);

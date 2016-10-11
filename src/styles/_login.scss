@@ -42,3 +42,8 @@ h1 {
   @include smoothing;
   @include shadow;
 }
+
+p {
+  @include montserrat;
+  @include smoothing;
+}

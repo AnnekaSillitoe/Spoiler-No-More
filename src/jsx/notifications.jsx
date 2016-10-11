@@ -2,6 +2,7 @@ import React from 'react';
 import TopBar from './topbar.jsx';
 import BottomBar from './bottombar.jsx';
 import TopSliderMessages from './topslidermessages.jsx';
+import convertTime from '../helpers/converttime.js';
 
 class Notifications extends React.Component{
   constructor(props) {
@@ -37,6 +38,9 @@ class Notifications extends React.Component{
           </div>
           <div className="profile-text">
             <p className="messages-user-text">{e.text}</p>
+        </div>
+        <div className="mini-button-section">
+          <p className="time-since-tweet">{convertTime(e.time)}</p>
         </div>
         </div>
       )
