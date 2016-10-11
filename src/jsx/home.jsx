@@ -1,6 +1,7 @@
 import React from 'react';
 import TopBar from './topbar.jsx';
 import BottomBar from './bottombar.jsx';
+import convertTime from '../helpers/converttime.js';
 
 class Home extends React.Component{
   constructor(props) {
@@ -38,7 +39,7 @@ class Home extends React.Component{
             <p className="messages-user-text">{e.text}</p>
           </div>
           <div className="mini-button-section">
-            <p className="time-since-tweet">{e.time}</p>
+            <p className="time-since-tweet">{convertTime(e.time)}</p>
           </div>
         </div>
       )

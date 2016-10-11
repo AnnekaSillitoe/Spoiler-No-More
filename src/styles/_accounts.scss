@@ -15,7 +15,7 @@
 
 .account-text {
   font-size: 3em;
-  color: #271133;
+  color: $purple-dark;
   margin: 70px 50px 0px 70px;
   display: inline-block;
   vertical-align: top;
@@ -23,7 +23,7 @@
 
 .account-box {
   padding: 5px 0px 25px 40px;
-  border-bottom: 2px #a0a2a3 solid;
+  border-bottom: $border-line;
   width: 94%;
   margin-left: 1%;
 }

@@ -5,7 +5,7 @@
 
 .user-box {
   padding: 5px 0px 15px 20px;
-  border-bottom: 2px #a0a2a3 solid;
+  border-bottom: $border-line;
   width: 96%;
   margin-left: 1%;
 }
@@ -20,7 +20,17 @@
 .messages-user-text {
   width: 90%;
   margin-bottom: 0px;
-  font-size: 2em;
+  font-size: 1.8em;
   display: inline-block;
-  color: rgba(73, 55, 83, 0.9);
+  color: $purple-main;
+}
+
+.mini-button-section {
+  width: 100%;
+}
+
+.time-since-tweet {
+  color: $color-icons;
+  margin: 0 0 0 2%;
+  font-size: 2em;
 }
