@@ -223,8 +223,7 @@ function getMedia(tweet){
     }).sort((a, b) => {
       return a.bitrate - b.bitrate;
     })[0].url;
-    console.log(media.video);
+    media.video;
   }
-  console.log(media);
   return media;
 }
