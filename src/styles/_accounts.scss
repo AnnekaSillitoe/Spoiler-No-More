@@ -1,28 +1,28 @@
 .top-text {
     left: 0;
-    margin-top: 140px;
     background-color: white;
     width: 100%;
+    margin-top: 14%;
 }
 
-.select-colour {
+.select-account {
   color: $purple-light;
   text-align: center;
   font-size: 3em;
-  margin-left: 30px;
-  margin-top: 20px;
+  margin-left: 0;
+  margin-top: 2%;
 }
 
 .account-text {
   font-size: 3em;
   color: $purple-dark;
-  margin: 70px 50px 0px 70px;
+  margin: 7% 0 0 7%;
   display: inline-block;
   vertical-align: top;
 }
 
 .account-box {
-  padding: 5px 0px 25px 40px;
+  padding: 1% 0 2.5% 4%;
   border-bottom: $border-line;
   width: 94%;
   margin-left: 1%;

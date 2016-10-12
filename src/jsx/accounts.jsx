@@ -8,7 +8,7 @@ class Accounts extends React.Component{
       <div>
         <TopBar/>
         <div className="top-text">
-          <p className="select-colour">Select which account you'd like to sign in with:</p>
+          <p className="select-account">Select which account you'd like to sign in with:</p>
         </div>
         <div className="account-box">
           <div className="image-square">

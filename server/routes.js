@@ -68,7 +68,6 @@ module.exports = [
           console.log(error);
         } else {
           var ids = data.ids.splice(0, 99).join();
-          console.log(ids);
           twitter.users("lookup", {user_id: ids}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, function(error, data, response) {
             if (error) {
               console.log(error);

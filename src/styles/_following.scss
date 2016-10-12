@@ -1,20 +1,20 @@
 .user-text {
   display: inline-block;
   width: 75%;
-  margin-left: 23px;
+  margin-left: 2%;
   position: absolute;
   padding-top: 10px;
 }
 
 .username {
-  font-size: 3em;
+  font-size: 2.6em;
   color: $purple-dark;
   float: left;
   margin: 0;
 }
 
 .at-username {
-  font-size: 2em;
+  font-size: 1.8em;
   color: $purple-light;
   float: right;
   margin: 0;
@@ -23,9 +23,9 @@
 .profile-text {
   display: inline-block;
   width: 77%;
-  margin-left: 23px;
+  margin-left: 2%;
   position: absolute;
-  padding-top: 45px;
+  padding-top: 4%;
 }
 
 .profile-user-text {
@@ -38,12 +38,16 @@
 }
 
 .following-user-icon {
-  float: right;
-  display: inline-block;
-  padding-top: 30px;
+  color: $purple-dark;
+  font-size: 8em;
 }
 
 .friends-list {
   margin-bottom: 16%;
   padding-top: 24%;
+}
+
+.following-button {
+  position: absolute;
+  padding-top: 4%;
 }
