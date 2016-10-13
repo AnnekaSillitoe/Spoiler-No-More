@@ -2,6 +2,17 @@
   padding-top: 14%;
 }
 
+.button-profile-box {
+  width: 10%;
+  float: right;
+  display: inline-block;
+}
+
+.button-following-box {
+  width: 50%;
+  display: inline-block;
+}
+
 .settings-icon {
   font-size: 5em;
   color: $color-icons;
@@ -22,7 +33,7 @@
   font-size: 5em;
   color: $color-icons;
   display: inline-block;
-  padding-left: 30%;
+  vertical-align: top;
 }
 
 .profile-username {
@@ -43,6 +54,10 @@
   padding: 1% 0 1% 3%;
   width: 96%;
   margin-left: 1%;
+  margin-top: 13%;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .mid-bar {
@@ -58,20 +73,21 @@
 
 .number-of-following, .number-of-followers {
   color: $color-icons;
-  font-size: 2.0em;
-  display: inline-block;
-  padding: 0 1%;
+  font-size: 3em;
 }
 
 .profile-tweet-time {
-  width: 96%;
+  width: 98%;
   display: inline-block;
+  padding-top: 4%;
 }
 
 .location-text {
   color: $color-icons;
   font-size: 2.0em;
+  float: right;
   display: inline-block;
+  vertical-align: top;
 }
 
 .profile-user-image {
@@ -86,5 +102,30 @@
   padding: 0 3%;
   margin-left: 1%;
   border-bottom: $border-line;
-  margin-top: 8%;
+}
+
+.profile-user-text {
+  width: 97%;
+  margin-bottom: 0;
+  font-size: 1.8em;
+  display: inline-block;
+  color: $purple-main;
+  margin-top: 0;
+  padding: 1%;
+}
+
+.profile-user-timeline {
+  margin-top: 45%;
+  overflow: hidden;
+}
+
+.followers-section {
+  width: 57%;
+  display: inline-block;
+}
+
+.location-section {
+  width: 22%;
+  float: right;
+  display: inline-block;
 }

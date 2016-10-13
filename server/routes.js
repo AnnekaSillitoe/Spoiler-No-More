@@ -187,6 +187,20 @@ module.exports = [
   },
   {
     method: 'GET',
+    path: '/profilepage',
+    handler: (req, reply) => {
+      twitter.getTimeline("user_timeline", {user_id: "annekasillitoe"}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, function(error, data, response) {
+        if (error) {
+          console.log(error);
+        } else {
+          data = data.map(formatTweet);
+          reply(data);
+        }
+      });
+    }
+  },
+  {
+    method: 'GET',
     path: '/{path*}',
     handler: function(request, reply) {
       reply.file(__dirname + '/../public/' + request.params.path)
@@ -203,6 +217,10 @@ function formatTweet(tweet) {
     time: tweet.created_at,
     image: getMedia(tweet).image,
     video: getMedia(tweet).video,
+    profileText: tweet.user.description,
+    followersCount: tweet.user.followers_count,
+    friendsCount: tweet.user.friends_count,
+    location: tweet.user.location,
   };
 }
 

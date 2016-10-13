@@ -37,7 +37,7 @@ class Following extends React.Component{
             <p className="at-username">@{e.screen_name}</p>
           </div>
           <div className="profile-text">
-            <p className="profile-user-text">{e.description}</p>
+            <p className="following-user-text">{e.description}</p>
             <button className="following-button">
               <i className="material-icons following-user-icon">check_box</i>
               {/*<i className="material-icons following-user-icon">person_add</i>*/}
