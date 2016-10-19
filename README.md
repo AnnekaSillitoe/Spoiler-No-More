@@ -19,7 +19,6 @@ This app has allowed me to practice many topics I have learnt in recent months, 
 * OAuth
 * Hapi
 * Node/Nodemon
-* Redis
 * React/React-Dom/React-Router
 * SASS
 * API
