@@ -1,31 +1,31 @@
 @mixin square($color) {
-  height: 150px;
-  width: 150px;
+  height: 9vh;
+  width: 15vw;
   background-color: $color;
 }
 
-$display-box: flex;
+$display-box: block;
 
-.top-text {
+.colour-top-text {
     left: 0;
-    margin-top: 120px;
     background-color: white;
     width: 100%;
-    display: flex;
+    display: block;
 }
 
-.back-arrow {
-  position: relative;
-  height: 100%;
-  width: 100%;
-}
-
-.select-colour {
+.select-colour-text {
   color: $purple-light;
   text-align: center;
   font-size: 3em;
-  margin-left: 30px;
-  margin-top: 20px;
+  margin-left: 0;
+  margin-top: 13%;
+  width: 88%;
+  display: inline-block;
+}
+
+.back-arrow {
+  font-size: 8em;
+  color: $color-icons;
 }
 
 .blue-square {
@@ -35,44 +35,48 @@ $display-box: flex;
 
 .green-square {
 	@include square($green-main);
+  display: inline-block;
 }
 
 .pink-square {
 	@include square($pink-main);
+  display: inline-block;
 }
 
 .purple-square {
 	@include square($purple-main);
+  display: inline-block;
 }
 
 .colour-text {
   font-size: 3em;
   color: $purple-dark;
-  margin-left: 70px;
-  margin-top: 30px;
+  padding: 4%;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .blue-box {
   display: $display-box;
-  padding: 0 0px 40px 40px;
+  padding: 0 0px 4% 4%;
   border-bottom: $border-line;
 }
 
 .green-box {
   display: $display-box;
-  padding: 40px 0 40px 40px;
+  padding: 4% 0 4% 4%;
   border-bottom: $border-line;
 }
 
 .pink-box {
   display: $display-box;
-  padding: 40px 0 40px 40px;
+  padding: 4% 0 4% 4%;
   border-bottom: $border-line;
 }
 
 .purple-box {
   display: $display-box;
-  padding: 40px 0 40px 40px;
+  padding: 4% 0 4% 4%;
   border-bottom: $border-line;
 }
 

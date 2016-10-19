@@ -2,35 +2,28 @@
   background-color: $purple-main;
   height: 7%;
   width: 100%;
-  padding: 2%;
-  margin:0px;
+  padding: 0 0 3% 0;
+  margin:0;
   left: 0;
   bottom: 0;
   position:fixed;
 }
 
 .home-icon {
-  height: 70%;
-  width: 40%;
-  padding: 0 30%;
+  font-size: 8em;
 }
 
 .lists-icon {
-  height: 70%;
-  width: 40%;
-  padding: 0 30%;
+  font-size: 8em;
 }
 
 .profile-icon {
-  height: 70%;
-  width: 40%;
-  padding: 0 30%;
+  font-size: 8em;
 }
 
 .message-icon {
-  height: 70%;
-  width: 40%;
-  padding: 0 30%;
+  width: 88px;
+  font-size: 8em;
 }
 
 .icon-box {
@@ -40,7 +33,7 @@
 
 .p-bottom-bar {
   color: $purple-light;
-  font-size: 2.5em;
+  font-size: 3.5em;
   margin: 0;
   text-align: center;
 }

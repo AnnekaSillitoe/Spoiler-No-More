@@ -1,7 +1,6 @@
 import React from 'react';
 import TopBar from './topbar.jsx';
 import BottomBar from './bottombar.jsx';
-import FollowingUsersIcon from './followingusericon.jsx';
 import TopSliderLists from './topsliderlists.jsx';
 
 class Following extends React.Component{
@@ -38,8 +37,12 @@ class Following extends React.Component{
             <p className="at-username">@{e.screen_name}</p>
           </div>
           <div className="profile-text">
-            <p className="profile-user-text">{e.description}</p>
-            <FollowingUsersIcon palette={{followinguser:'rgba(174,133,200,1)'}}/>
+            <p className="following-user-text">{e.description}</p>
+            <button className="following-button">
+              <i className="material-icons following-user-icon">check_box</i>
+              {/*<i className="material-icons following-user-icon">person_add</i>*/}
+              {/*this icon is for when not following a user*/}
+            </button>
           </div>
         </div>
       )

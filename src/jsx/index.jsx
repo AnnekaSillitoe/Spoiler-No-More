@@ -6,6 +6,7 @@ import Login from './login.jsx';
 import Home from './home.jsx';
 import Colour from './colour.jsx';
 import Accounts from './accounts.jsx';
+import Profile from './profile.jsx';
 import Lists from './lists.jsx';
 import Following from './following.jsx';
 import Messages from './messages.jsx';
@@ -23,6 +24,7 @@ const routes = (
     <Route path='/following'component = { Following }/>
     <Route path='/messages'component = { Messages }/>
     <Route path='/notifications'component = { Notifications }/>
+    <Route path='/profile'component = { Profile }/>
     <Route path="listmembers/:id/:slug" component = { ListMembers }/>
   </Route>
 )

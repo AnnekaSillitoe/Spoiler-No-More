@@ -2,6 +2,7 @@ import React from 'react';
 import TopBar from './topbar.jsx';
 import BottomBar from './bottombar.jsx';
 import TopSliderMessages from './topslidermessages.jsx';
+import ButtonSection from './buttonsection.jsx';
 import convertTime from '../helpers/converttime.js';
 
 class Notifications extends React.Component{
@@ -40,7 +41,10 @@ class Notifications extends React.Component{
             <p className="messages-user-text">{e.text}</p>
         </div>
         <div className="mini-button-section">
-          <p className="time-since-tweet">{convertTime(e.time)}</p>
+          <div className="tweet-time">
+            <p className="time-since-tweet">{convertTime(e.time)}</p>
+          </div>
+          <ButtonSection/>
         </div>
         </div>
       )

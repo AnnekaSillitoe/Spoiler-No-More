@@ -1,6 +1,5 @@
 import React from 'react';
 import TopBar from './topbar.jsx';
-import BackArrow from './backarrow.jsx';
 import BottomBar from './bottombar.jsx';
 
 class Colour extends React.Component{
@@ -8,11 +7,11 @@ class Colour extends React.Component{
     return (
       <div>
         <TopBar/>
-        <div className="top-text">
+        <div className="colour-top-text">
           <button className="arrow-button">
-            <BackArrow palette={{backarrow:'#a0a2a3'}}/>
+              <i className="material-icons back-arrow">keyboard_arrow_left</i>
           </button>
-          <p className="select-colour">Select which colour you’d like to use:</p>
+          <p className="select-colour-text">Select which colour you’d like to use:</p>
         </div>
         <div className="blue-box">
           <div className="blue-square"></div>

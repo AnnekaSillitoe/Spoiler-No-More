@@ -1,5 +1,4 @@
 import React from 'react';
-import ReplyIcon from './replyicon.jsx';
 import { Link } from 'react-router';
 
 class ButtonSection extends React.Component{
