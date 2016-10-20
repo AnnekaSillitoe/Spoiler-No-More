@@ -1,0 +1,21 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true,
+      "impliedStrict": true,
+      "modules": true
+    }
+  },
+  "rules": {
+    "indent": [ 1, 2 ],
+    "key-spacing": [2, { "beforeColon": false, "afterColon": true, "mode": "strict" }],
+  }
+}

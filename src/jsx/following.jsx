@@ -21,14 +21,14 @@ class Following extends React.Component{
         });
       }
     }.bind(this);
-    xhr.open("GET", "/friendsid");
+    xhr.open('GET', '/friendsid');
     xhr.send();
   }
 
   render(){
-    var friendslist = this.state.friends.map(e => {
+    var friendslist = this.state.friends.map((e, i) => {
       return (
-        <div className="account-box">
+        <div key={i} className="account-box">
           <div className="image-square">
             <img src={e.profile_image} height="150px" width="150px"></img>
           </div>
@@ -46,7 +46,7 @@ class Following extends React.Component{
           </div>
         </div>
       )
-    });
+    })
 
     return (
       <div>

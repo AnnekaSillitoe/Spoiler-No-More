@@ -1,9 +1,9 @@
 const twitterAPI = require('node-twitter-api');
 var creds = {};
 var twitter = new twitterAPI({
-    consumerKey: process.env.CONSUMER_KEY,
-    consumerSecret: process.env.CONSUMER_SECRET,
-    callback: process.env.CALLBACK_URL
+  consumerKey: process.env.CONSUMER_KEY,
+  consumerSecret: process.env.CONSUMER_SECRET,
+  callback: process.env.CALLBACK_URL
 });
 
 module.exports = [
@@ -12,17 +12,17 @@ module.exports = [
     path: '/',
     handler: (req, reply) => {
       if (req.query.oauth_verifier){
-        twitter.getAccessToken(creds.requestToken, creds.requestTokenSecret, req.query.oauth_verifier, function(error, accessToken, accessTokenSecret, results) {
+        twitter.getAccessToken(creds.requestToken, creds.requestTokenSecret, req.query.oauth_verifier, (error, accessToken, accessTokenSecret, results) => {
           if (error) {
             console.log(error);
           } else {
             creds.accessToken = accessToken;
             creds.accessTokenSecret = accessTokenSecret;
-            reply.file(__dirname + '/../public/index.html')
+            reply.file(__dirname + '/../public/index.html');
           }
         });
       } else {
-        reply.file(__dirname + '/../public/index.html')
+        reply.file(__dirname + '/../public/index.html');
       }
     }
   },
@@ -30,16 +30,16 @@ module.exports = [
     method: ['GET', 'POST'],
     path: '/twitterlogin',
     handler: function (req, reply) {
-      twitter.getRequestToken(function(error, requestToken, requestTokenSecret, results){
+      twitter.getRequestToken((error, requestToken, requestTokenSecret, results) => {
         if (error) {
-          console.log("Error getting OAuth request token : " + error);
+          console.log('Error getting OAuth request token : ' + error);
         } else {
           creds.requestToken = requestToken;
           creds.requestTokenSecret = requestTokenSecret;
           if (creds.accessToken) {
-            reply.file(__dirname + '/../public/index.html')
+            reply.file(__dirname + '/../public/index.html');
           } else {
-            reply.redirect(`https://twitter.com/oauth/authenticate?oauth_token=${requestToken}`)
+            reply.redirect(`https://twitter.com/oauth/authenticate?oauth_token=${requestToken}`);
           }
         }
       });
@@ -49,7 +49,7 @@ module.exports = [
     method: 'GET',
     path: '/returndata',
     handler: (req, reply) => {
-      twitter.getTimeline("home", {count:800}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, function(error, data, response) {
+      twitter.getTimeline('home', {count: 800}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {
@@ -63,12 +63,12 @@ module.exports = [
     method: 'GET',
     path: '/friendsid',
     handler: (req, reply) => {
-      twitter.friends("ids", {}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, function(error, data, response) {
+      twitter.friends('ids', {}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {
           var ids = data.ids.splice(0, 99).join();
-          twitter.users("lookup", {user_id: ids}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, function(error, data, response) {
+          twitter.users('lookup', {user_id: ids}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
             if (error) {
               console.log(error);
             } else {
@@ -91,7 +91,7 @@ module.exports = [
     method: 'GET',
     path: '/listsowned',
     handler: (req, reply) => {
-      twitter.lists("ownerships", {}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, function(error, data, response) {
+      twitter.lists('ownerships', {}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {
@@ -112,7 +112,7 @@ module.exports = [
     method: 'GET',
     path: '/listmembersall/{id}/{slug}',
     handler: (req, reply) => {
-      twitter.lists("members", {slug: req.params.slug, owner_id: req.params.id}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, function(error, data, response) {
+      twitter.lists('members', {slug: req.params.slug, owner_id: req.params.id}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {
@@ -133,7 +133,7 @@ module.exports = [
     method: 'GET',
     path: '/dms',
     handler: (req, reply) => {
-      twitter.direct_messages("sent", {count:200}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, function(error, data, response) {
+      twitter.direct_messages('sent', {count: 200}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {
@@ -160,7 +160,7 @@ module.exports = [
     method: 'GET',
     path: '/rts',
     handler: (req, reply) => {
-      twitter.getTimeline("mentions_timeline", {count: 200}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, function(error, data, response) {
+      twitter.getTimeline('mentions_timeline', {count: 200}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {
@@ -189,7 +189,7 @@ module.exports = [
     method: 'GET',
     path: '/profilepage',
     handler: (req, reply) => {
-      twitter.getTimeline("user_timeline", {user_id: "annekasillitoe"}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, function(error, data, response) {
+      twitter.getTimeline('user_timeline', {user_id: 'annekasillitoe', count: 200}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {
@@ -203,7 +203,7 @@ module.exports = [
     method: 'GET',
     path: '/{path*}',
     handler: function(request, reply) {
-      reply.file(__dirname + '/../public/' + request.params.path)
+      reply.file(__dirname + '/../public/' + request.params.path);
     }
   }
 ];
@@ -228,7 +228,7 @@ function getMedia(tweet){
   var media = {};
   if(tweet.extended_entities && tweet.extended_entities.media) {
     media.image = tweet.extended_entities.media.map(el => {
-      if (el.type === "photo") {
+      if (el.type === 'photo') {
         return el.media_url;
       };
     });
@@ -236,7 +236,7 @@ function getMedia(tweet){
   if(tweet.extended_entities && tweet.extended_entities.media && tweet.extended_entities.media[0] && tweet.extended_entities.media[0].video_info) {
     var videos = tweet.extended_entities.media[0].video_info.variants;
     media.video = videos.filter(el => {
-      return el.content_type = "video/mp4";
+      return el.content_type = 'video/mp4';
     }).sort((a, b) => {
       return a.bitrate - b.bitrate;
     })[0].url;

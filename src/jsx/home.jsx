@@ -21,14 +21,14 @@ class Home extends React.Component{
         });
       }
     }.bind(this);
-    xhr.open("GET", "/returndata");
+    xhr.open('GET', '/returndata');
     xhr.send();
   }
 
   render(){
-    var tl = this.state.timeline.map(e => {
+    var tl = this.state.timeline.map((e, i) => {
       return (
-        <div className="user-box">
+        <div key={i} className="user-box">
           <div className="user-heading">
             <p className="username">{e.name}</p>
             <p className="at-username">@{e.username}</p>
@@ -47,7 +47,7 @@ class Home extends React.Component{
           </div>
         </div>
       )
-    });
+    })
 
     return (
       <div>

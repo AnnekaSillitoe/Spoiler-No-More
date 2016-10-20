@@ -25,9 +25,9 @@ class Messages extends React.Component{
   }
 
   render(){
-    var direct_messages = this.state.dms.map(e => {
+    var direct_messages = this.state.dms.map((e, i) => {
       return (
-        <div className="user-box">
+        <div key={i} className="user-box">
           <div className="user-heading">
             <p className="username">{e.name}</p>
             <p className="at-username">@{e.screen_name}</p>
