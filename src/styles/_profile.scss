@@ -3,6 +3,7 @@
 }
 
 .button-profile-box {
+  padding-right: 10%;
   width: 10%;
   float: right;
   display: inline-block;
@@ -19,6 +20,13 @@
   float: right;
   display: inline-block;
   padding-right: 1%;
+}
+
+.edit-icon {
+  padding-top: 2%;
+  float: right;
+  font-size: 3em;
+  color: $color-icons;
 }
 
 .group-icon {
@@ -54,10 +62,12 @@
   padding: 1% 0 1% 3%;
   width: 96%;
   margin-left: 1%;
-  margin-top: 13%;
+  margin-top: 12.5%;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 100;
+  background-color: white;
 }
 
 .mid-bar {
@@ -115,7 +125,8 @@
 }
 
 .profile-user-timeline {
-  margin-top: 45%;
+  margin-top: 46%;
+  margin-bottom: 16%;
   overflow: hidden;
 }
 
@@ -126,6 +137,16 @@
 
 .location-section {
   width: 22%;
+  padding-right: 1%;
   float: right;
   display: inline-block;
+}
+
+.edit-profile-box {
+  padding-top: 3%;
+  float: right;
+}
+
+.profile-image {
+  padding-top: 13%;
 }

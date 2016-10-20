@@ -26,9 +26,9 @@ class Lists extends React.Component{
   }
 
   render(){
-    var listsowned = this.state.lists.map(e => {
+    var listsowned = this.state.lists.map((e, i) => {
       return (
-        <div className="account-box">
+        <div key={i} className="account-box">
           <div className="image-square">
             <img src="https://pbs.twimg.com/profile_images/664807873713725440/r8ZAg5lD.jpg" height="150px" width="150px"></img>
           </div>

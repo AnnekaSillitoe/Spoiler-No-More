@@ -27,9 +27,9 @@ class Notifications extends React.Component{
   }
 
   render(){
-    var retweets = this.state.rts.map(e => {
+    var retweets = this.state.rts.map((e, i) => {
       return (
-        <div className="user-box">
+        <div key={i} className="user-box">
           <div className="user-heading">
             <p className="username">{e.name}</p>
             <p className="at-username">@{e.screen_name}</p>
@@ -55,7 +55,7 @@ class Notifications extends React.Component{
         <TopBar/>
         <TopSliderMessages/>
         <div className="friends-list">
-          {retweets}}
+          {retweets}
         </div>
         <BottomBar/>
       </div>

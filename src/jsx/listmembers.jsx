@@ -24,9 +24,9 @@ class ListMembers extends React.Component{
   }
 
   render(){
-    var members = this.state.lms.map(e => {
+    var members = this.state.lms.map((e, i) => {
       return (
-        <div className="user-box">
+        <div key={i} className="user-box">
           <div className="user-heading">
             <p className="username">{e.name}</p>
             <p className="at-username">@{e.screen_name}</p>
