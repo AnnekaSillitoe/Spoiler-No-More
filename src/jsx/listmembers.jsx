@@ -44,8 +44,8 @@ class ListMembers extends React.Component{
     return (
       <div>
         <TopBar/>
-        <div className="home-timeline">
-          {members}}
+        <div className="listmembers-timeline">
+          {members}
         </div>
         <BottomBar/>
       </div>

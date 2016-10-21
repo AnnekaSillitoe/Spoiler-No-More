@@ -6,6 +6,8 @@ var twitter = new twitterAPI({
   callback: process.env.CALLBACK_URL
 });
 
+const querystring = require('querystring');
+
 module.exports = [
   {
     method: 'GET',
@@ -49,7 +51,7 @@ module.exports = [
     method: 'GET',
     path: '/returndata',
     handler: (req, reply) => {
-      twitter.getTimeline('home', {count: 800}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+      twitter.getTimeline('home', {count: 100}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {
@@ -174,13 +176,13 @@ module.exports = [
             };
           });
           reply(data);
-          // const dataObject = {};
-          // for (var i = 0; i < data.length; i++) {
-          //   if (!dataObject[data[i].name]) {
-          //     dataObject[data[i].name] = data[i];
-          //   }
-          // }
-          // reply(Object.keys(dataObject).map(el => dataObject[el]));
+          {/*const dataObject = {};
+          for (var i = 0; i < data.length; i++) {
+            if (!dataObject[data[i].name]) {
+              dataObject[data[i].name] = data[i];
+            }
+          }
+          reply(Object.keys(dataObject).map(el => dataObject[el]));*/}
         }
       });
     }
@@ -194,6 +196,20 @@ module.exports = [
           console.log(error);
         } else {
           data = data.map(formatTweet);
+          reply(data);
+        }
+      });
+    }
+  },
+  {
+    method: 'POST',
+    path: '/profilepages',
+    handler: (req, reply) => {
+      var updates = querystring.parse(req.payload);
+      twitter.account('update_profile', {name: updates.name, location: updates.location, description: updates.description} , process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+        if (error) {
+          console.log(error);
+        } else {
           reply(data);
         }
       });
