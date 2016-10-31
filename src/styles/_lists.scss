@@ -7,21 +7,35 @@
   font-size: 3em;
   color: $purple-dark;
   width: 40%;
+  margin-left: 2%;
   padding: 21px 0px;
   border-bottom: 2px solid $purple-dark;
 }
 
 .top-slider {
   left: 0;
-  margin-top: 122px;
+  margin-top: 12%;
+  padding-bottom: 3%;
   background-color: white;
   width: 100%;
   text-align: center;
-  margin-bottom: 25px;
   position: fixed;
   z-index: 100;
 }
 
 .lists-following:first-of-type {
-  margin-right: 75px;
+  margin-right: 2%;
+}
+
+.add-new-list {
+  font-size: 8em;
+  color: $color-icons;
+  vertical-align: middle;
+}
+
+.list-text {
+  font-size: 3em;
+  color: $purple-dark;
+  padding: 5% 0;
+  width: 98%;
 }

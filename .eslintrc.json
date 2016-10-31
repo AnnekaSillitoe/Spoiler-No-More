@@ -1,7 +1,6 @@
 {
   "env": {
     "browser": true,
-    "es6": true,
     "node": true
   },
   "parserOptions": {
@@ -17,5 +16,6 @@
   "rules": {
     "indent": [ 1, 2 ],
     "key-spacing": [2, { "beforeColon": false, "afterColon": true, "mode": "strict" }],
+    "no-extra-parens": 1
   }
 }
