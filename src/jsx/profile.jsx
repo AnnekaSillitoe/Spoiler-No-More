@@ -44,24 +44,21 @@ class Profile extends React.Component{
   }
 
   updateProfile() {
-    console.log('hi');
-  let xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-    console.log('profile updated');
-    this.setState({editable: false});
-    }
-  }.bind(this);
-  xhr.open('POST', '/profilepages');
-  xhr.send(querystring.stringify(this.state.profile));
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        this.setState({editable: false});
+      }
+    }.bind(this);
+    xhr.open('POST', '/profilepages');
+    xhr.send(querystring.stringify(this.state.profile));
   }
 
   updateValue(event) {
     this.setState({profile: Object.assign(this.state.profile, {name: event.target.value})})
-      if (event.keyCode === 13) {
-        console.log('hello');
-        this.updateProfile();
-      }
+    if (event.keyCode === 13) {
+      this.updateProfile();
+    }
   }
 
   render(){
@@ -90,9 +87,9 @@ class Profile extends React.Component{
 
     function editableName() {
       if (this.state.editable) {
-        return (<input className="profile-username" type="text" defaultValue={this.state.profile.name} onKeyUp={this.updateValue}></input>)
+        return <input className="profile-username" type="text" defaultValue={this.state.profile.name} onKeyUp={this.updateValue}></input>
       } else {
-        return (<p className="profile-username">{this.state.profile.name}</p>)
+        return <p className="profile-username">{this.state.profile.name}</p>
       }
     };
 
@@ -124,7 +121,7 @@ class Profile extends React.Component{
                   <div className="profile-tweet-time">
                     <div className="followers-section">
                     <button className="button-following-box"><Link to="">
-                      <p className="number-of-following">{this.state.profile.followers} Followers .</p>
+                      <p className="number-of-following">{this.state.profile.followers} Followers </p>
                     </Link></button>
                     <button className="button-following-box"><Link to="/following">
                       <p className="number-of-followers">{this.state.profile.following} Following</p>
