@@ -216,6 +216,20 @@ module.exports = [
     }
   },
   {
+    method: 'POST',
+    path: '/createlists',
+    handler: (req, reply) => {
+      var updates = querystring.parse(req.payload);
+      twitter.lists('create', {name: updates.name} , process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+        if (error) {
+          console.log(error);
+        } else {
+          reply(data);
+        }
+      });
+    }
+  },
+  {
     method: 'GET',
     path: '/{path*}',
     handler: function(request, reply) {
