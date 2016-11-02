@@ -28,6 +28,21 @@
   color: $color-icons;
 }
 
+.check-icon {
+  padding-top: 2%;
+  float: right;
+  font-size: 3em;
+  color: $color-icons;
+}
+
+.hidden {
+  display: none;
+}
+
+.block {
+  display: block;
+}
+
 .group-icon {
   font-size: 5em;
   color: $color-icons;
@@ -38,6 +53,7 @@
 .location-icon {
   font-size: 5em;
   color: $color-icons;
+  float: right;
   display: inline-block;
   vertical-align: top;
 }
@@ -148,4 +164,8 @@
 
 .profile-image {
   padding-top: 13%;
+}
+
+.textBox {
+  width: 70%;
 }
