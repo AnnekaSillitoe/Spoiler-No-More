@@ -30,7 +30,6 @@
 .add-new-list {
   font-size: 8em;
   color: $color-icons;
-  vertical-align: middle;
 }
 
 .list-text {
@@ -38,4 +37,16 @@
   color: $purple-dark;
   padding: 5% 0;
   width: 98%;
+}
+
+.lists-button {
+  margin-top: 26%;
+  position: fixed;
+  right: 2%;
+}
+
+.lists-list {
+  padding-top: 26%;
+  margin-bottom: 16%;
+  width: 100%;
 }

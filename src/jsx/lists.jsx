@@ -39,7 +39,8 @@ class Lists extends React.Component{
       <div>
         <TopBar/>
         <TopSliderLists/>
-          <div className="friends-list">
+        <button className="lists-button" onClick={()=>this.setState({createNewList: true})}><i className="material-icons add-new-list">add_circle</i></button>
+          <div className="lists-list">
             {listsowned}
           </div>
         <BottomBar/>
