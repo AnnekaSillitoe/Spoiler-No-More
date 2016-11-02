@@ -35,7 +35,6 @@ class TopSliderLists extends React.Component{
     return (
       <div className="top-slider">
         <button className="lists-following"><Link to="/lists">Lists</Link></button>
-        <button className="lists-button" onClick={()=>this.setState({createNewList: true})}><i className="material-icons add-new-list">add_circle</i></button>
         <button className="lists-following"><Link to="/following">Following</Link></button>
       </div>
     )
