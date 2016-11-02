@@ -12,8 +12,9 @@ import Following from './following.jsx';
 import Messages from './messages.jsx';
 import Notifications from './notifications.jsx';
 import ListMembers from './listmembers.jsx';
+import CreateLists from './createlist.jsx';
 
-const routes = (
+const routes =
   <Route path='/'>
     <IndexRoute component={ Login }/>
     <Route path='/login'component = { Login }/>
@@ -26,8 +27,9 @@ const routes = (
     <Route path='/notifications'component = { Notifications }/>
     <Route path='/profile'component = { Profile }/>
     <Route path="listmembers/:id/:slug" component = { ListMembers }/>
+    <Route path="/createnewlist" component = { CreateLists }/>
   </Route>
-)
+
 
 ReactDOM.render(
   <Router history={ hashHistory }>
