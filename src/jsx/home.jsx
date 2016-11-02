@@ -43,7 +43,7 @@ class Home extends React.Component{
             <div className="tweet-time">
               <p className="time-since-tweet">{convertTime(e.time)}</p>
             </div>
-            <ButtonSection/>
+            <ButtonSection tweetId={e.id} favorited={e.favorited}/>
           </div>
         </div>
       )

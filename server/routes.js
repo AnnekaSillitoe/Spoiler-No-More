@@ -220,7 +220,38 @@ module.exports = [
     path: '/createlists',
     handler: (req, reply) => {
       var updates = querystring.parse(req.payload);
-      twitter.lists('create', {name: updates.name} , process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+      console.log(updates);
+      twitter.lists('create', {name: updates.listName} , process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+        if (error) {
+          console.log(error);
+        } else {
+          reply(data);
+        }
+      });
+    }
+  },
+  {
+    method: 'POST',
+    path: '/favouritetweet',
+    handler: (req, reply) => {
+      var updates = querystring.parse(req.payload);
+      console.log(updates);
+      twitter.favorites('create', {id: updates.tweetId} , process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+        if (error) {
+          console.log(error);
+        } else {
+          reply(data);
+        }
+      });
+    }
+  },
+  {
+    method: 'POST',
+    path: '/unfavouritetweet',
+    handler: (req, reply) => {
+      var updates = querystring.parse(req.payload);
+      console.log(updates);
+      twitter.favorites('destroy', {id: updates.tweetId} , process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {
@@ -251,6 +282,8 @@ function formatTweet(tweet) {
     followersCount: tweet.user.followers_count,
     friendsCount: tweet.user.friends_count,
     location: tweet.user.location,
+    id: tweet.id_str,
+    favorited: tweet.favorited,
   };
 }
 

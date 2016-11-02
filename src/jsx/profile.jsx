@@ -87,7 +87,7 @@ class Profile extends React.Component{
 
     function editableName() {
       if (this.state.editable) {
-        return <input className="profile-username textBox" type="text" defaultValue={this.state.profile.name} onKeyUp={this.updateValue.bind(null, "name")}></input>
+        return <input className="profile-username text-box" type="text" defaultValue={this.state.profile.name} onKeyUp={this.updateValue.bind(null, "name")}></input>
       } else {
         return <p className="profile-username">{this.state.profile.name}</p>
       }
@@ -95,7 +95,7 @@ class Profile extends React.Component{
 
     function editableBio() {
       if (this.state.editable) {
-        return <input className="profile-user-text textBox" type="text" defaultValue={this.state.profile.profileText} onKeyUp={this.updateValue.bind(null, "profileText")}></input>
+        return <input className="profile-user-text text-box" type="text" defaultValue={this.state.profile.profileText} onKeyUp={this.updateValue.bind(null, "profileText")}></input>
       } else {
         return <p className="profile-user-text">{this.state.profile.profileText}</p>
       }
@@ -103,7 +103,7 @@ class Profile extends React.Component{
 
     function editableLocation() {
       if (this.state.editable) {
-        return <input className="location-text textBox" type="text" defaultValue={this.state.profile.location} onKeyUp={this.updateValue.bind(null, "location")}></input>
+        return <input className="location-text text-box" type="text" defaultValue={this.state.profile.location} onKeyUp={this.updateValue.bind(null, "location")}></input>
       } else {
         return <p className="location-text">{this.state.profile.location}</p>
       }
