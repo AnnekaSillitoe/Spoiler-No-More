@@ -51,14 +51,14 @@ class Profile extends React.Component{
       }
     }.bind(this);
     xhr.open('POST', '/profilepages');
+    console.log(this.state.profile);
     xhr.send(querystring.stringify(this.state.profile));
   }
 
-  updateValue(event) {
-    this.setState({profile: Object.assign(this.state.profile, {name: event.target.value})})
-    if (event.keyCode === 13) {
-      this.updateProfile();
-    }
+  updateValue(value, event) {
+    var update = {};
+    update[value] = event.target.value;
+    this.setState({profile: Object.assign(this.state.profile, update)})
   }
 
   render(){
@@ -87,10 +87,52 @@ class Profile extends React.Component{
 
     function editableName() {
       if (this.state.editable) {
-        return <input className="profile-username" type="text" defaultValue={this.state.profile.name} onKeyUp={this.updateValue}></input>
+        return <input className="profile-username textBox" type="text" defaultValue={this.state.profile.name} onKeyUp={this.updateValue.bind(null, "name")}></input>
       } else {
         return <p className="profile-username">{this.state.profile.name}</p>
       }
+    };
+
+    function editableBio() {
+      if (this.state.editable) {
+        return <input className="profile-user-text textBox" type="text" defaultValue={this.state.profile.profileText} onKeyUp={this.updateValue.bind(null, "profileText")}></input>
+      } else {
+        return <p className="profile-user-text">{this.state.profile.profileText}</p>
+      }
+    };
+
+    function editableLocation() {
+      if (this.state.editable) {
+        return <input className="location-text textBox" type="text" defaultValue={this.state.profile.location} onKeyUp={this.updateValue.bind(null, "location")}></input>
+      } else {
+        return <p className="location-text">{this.state.profile.location}</p>
+      }
+    };
+
+    function editableButton () {
+      var edit;
+      var submit;
+      var onClick;
+      if (this.state.editable) {
+        edit = "hidden";
+        submit = "block";
+        onClick = function() {
+          this.setState({editable: false});
+          this.updateProfile();
+        }.bind(this);
+      } else {
+        edit = "block";
+        submit = "hidden";
+        onClick = function () {
+          this.setState({editable: true})
+        }.bind(this);
+      }
+      return(
+          <button className="edit-profile-box" onClick={onClick}>
+            <i className={"material-icons edit-icon " + edit}>edit</i>
+            <i className={"material-icons check-icon " + submit}>check</i>
+          </button>
+      )
     };
 
     return (
@@ -113,10 +155,8 @@ class Profile extends React.Component{
                 </div>
                 <div className="profile-text">
                   <p className="profile-at-username">@{this.state.profile.username}</p>
-                  <button className="edit-profile-box" onClick={()=>this.setState({editable: true})}>
-                    <i className="material-icons edit-icon">edit</i>
-                  </button>
-                  <p className="profile-user-text">{this.state.profile.profileText}</p>
+                  {editableButton.call(this)}
+                  {editableBio.call(this)}
                 </div>
                   <div className="profile-tweet-time">
                     <div className="followers-section">
@@ -128,7 +168,7 @@ class Profile extends React.Component{
                     </Link></button>
                     </div>
                     <div className="location-section">
-                      <i className="material-icons location-icon">location_on</i><p className="location-text">{this.state.profile.location}</p>
+                      {editableLocation.call(this)}<i className="material-icons location-icon">location_on</i>
                       </div>
                     </div>
                 <div className="mid-bar">

@@ -206,7 +206,7 @@ module.exports = [
     path: '/profilepages',
     handler: (req, reply) => {
       var updates = querystring.parse(req.payload);
-      twitter.account('update_profile', {name: updates.name, location: updates.location, description: updates.description} , process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+      twitter.account('update_profile', {name: updates.name, location: updates.location, description: updates.profileText} , process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {
