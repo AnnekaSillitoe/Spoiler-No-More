@@ -14,6 +14,7 @@ import Notifications from './notifications.jsx';
 import ListMembers from './listmembers.jsx';
 import CreateLists from './createlist.jsx';
 import Settings from './settings.jsx';
+import NewTweet from './newtweet.jsx';
 
 const routes =
   <Route path='/'>
@@ -30,6 +31,7 @@ const routes =
     <Route path="listmembers/:id/:slug" component = { ListMembers }/>
     <Route path="/createnewlist" component = { CreateLists }/>
     <Route path="/settings" component = { Settings }/>
+    <Route path="/newtweet" component = { NewTweet }/>
   </Route>
 
 

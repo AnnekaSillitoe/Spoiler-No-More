@@ -1,0 +1,65 @@
+.new-tweet-text {
+  display: inline-block;
+}
+
+.tweet-text-box {
+  margin-top: 5%;
+  width: 90vw;
+  height: 35vh;
+  margin-left: 5%;
+  border: $border-line;
+}
+
+textarea.new-tweet-text-box {
+  margin-top: 3%;
+  color: $color-icons;
+  @include karla;
+  font-size: 3em;
+  display: inline-block;
+  width: 85%;
+  height: 19vh;
+}
+
+.close {
+  display: inline-block;
+  position: fixed;
+  margin-top: 3%;
+  margin-right: 3%;
+  width: 13%;
+}
+
+.close-icon {
+  font-size: 6em;
+  padding: 2%;
+  color: $color-icons;
+  float: right;
+
+}
+
+.draft {
+  float: left;
+  display: inline-block;
+  width: 40%;
+}
+
+p.draft-text {
+  @include karla;
+  font-size: 4em;
+}
+
+.send {
+  float: right;
+  display: inline-block;
+  width: 34%;
+}
+
+p.send-text {
+  @include karla;
+  font-size: 4em;
+}
+
+.tweet-buttons {
+  display: inline-block;
+  width: 82%;
+  padding: 0% 7%;
+}
