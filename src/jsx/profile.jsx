@@ -141,36 +141,38 @@ class Profile extends React.Component{
         <div className="profile-timeline">
           <div>
               <div className="profile-box">
-                <div className="user-heading">
+                <div className="profile-heading">
                   {editableName.call(this)}
-                  <button className="button-profile-box">
-                  <i className="material-icons settings-icon">settings</i>
-                  </button>
+                  <button className="button-profile-box"><Link to="/settings" className="settings-link">
+                    <i className="material-icons settings-icon">settings</i>
+                  </Link></button>
                   <button className="button-profile-box">
                   <i className="material-icons group-icon">group</i>
                   </button>
                 </div>
-                <div className="profile-user-image">
-                  <img className="profile-image" src={this.state.profile.profileImage} height="150px" width="150px"></img>
-                </div>
-                <div className="profile-text">
-                  <p className="profile-at-username">@{this.state.profile.username}</p>
-                  {editableButton.call(this)}
-                  {editableBio.call(this)}
-                </div>
-                  <div className="profile-tweet-time">
-                    <div className="followers-section">
-                    <button className="button-following-box"><Link to="">
-                      <p className="number-of-following">{this.state.profile.followers} Followers </p>
-                    </Link></button>
-                    <button className="button-following-box"><Link to="/following">
-                      <p className="number-of-followers">{this.state.profile.following} Following</p>
-                    </Link></button>
-                    </div>
-                    <div className="location-section">
-                      {editableLocation.call(this)}<i className="material-icons location-icon">location_on</i>
+                <div className = "profile-image-text">
+                  <div className="profile-user-image">
+                    <img className="profile-image" src={this.state.profile.profileImage} height="150px" width="150px"></img>
+                  </div>
+                  <div className="profile-profile-text">
+                    <p className="profile-at-username">@{this.state.profile.username}</p>
+                    {editableButton.call(this)}
+                    {editableBio.call(this)}
+                  </div>
+                    <div className="profile-tweet-time">
+                      <div className="followers-section">
+                      <button className="button-following-box"><Link to="">
+                        <p className="number-of-following">{this.state.profile.followers} Followers </p>
+                      </Link></button>
+                      <button className="button-following-box"><Link to="/following">
+                        <p className="number-of-followers">{this.state.profile.following} Following</p>
+                      </Link></button>
+                      </div>
+                      <div className="location-section">
+                        {editableLocation.call(this)}<i className="material-icons location-icon">location_on</i>
                       </div>
                     </div>
+                  </div>
                 <div className="mid-bar">
                 </div>
               </div>
