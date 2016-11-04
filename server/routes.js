@@ -79,7 +79,8 @@ module.exports = [
                   name: el.name,
                   screen_name: el.screen_name,
                   description: el.description,
-                  profile_image: el.profile_image_url
+                  profile_image: el.profile_image_url,
+                  id: el.id_str
                 };
               });
               reply(data);
@@ -252,6 +253,36 @@ module.exports = [
       var updates = querystring.parse(req.payload);
       console.log(updates);
       twitter.favorites('destroy', {id: updates.tweetId} , process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+        if (error) {
+          console.log(error);
+        } else {
+          reply(data);
+        }
+      });
+    }
+  },
+  {
+    method: 'POST',
+    path: '/unfriend',
+    handler: (req, reply) => {
+      var updates = querystring.parse(req.payload);
+      console.log(updates);
+      twitter.friendships('destroy',{user_id: updates.id}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+        if (error) {
+          console.log(error);
+        } else {
+          reply(data);
+        }
+      });
+    }
+  },
+  {
+    method: 'POST',
+    path: '/refriend',
+    handler: (req, reply) => {
+      var updates = querystring.parse(req.payload);
+      console.log(updates);
+      twitter.friendships('create',{user_id: updates.id}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {

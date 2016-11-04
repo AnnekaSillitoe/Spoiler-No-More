@@ -2,14 +2,14 @@ import React from 'react';
 import TopBar from './topbar.jsx';
 import BottomBar from './bottombar.jsx';
 import TopSliderLists from './topsliderlists.jsx';
+import Friend from './friend.jsx';
 
 class Following extends React.Component{
-
   constructor(props) {
     super(props);
     this.state = {
-      friends: []
-    }
+      friends: [],
+    };
   }
 
   componentWillMount() {
@@ -28,23 +28,7 @@ class Following extends React.Component{
   render(){
     var friendslist = this.state.friends.map((e, i) => {
       return (
-        <div key={i} className="account-box">
-          <div className="image-square">
-            <img src={e.profile_image} height="150px" width="150px"></img>
-          </div>
-          <div className="user-text">
-            <p className="username">{e.name}</p>
-            <p className="at-username">@{e.screen_name}</p>
-          </div>
-          <div className="profile-text">
-            <p className="following-user-text">{e.description}</p>
-            <button className="following-button">
-              <i className="material-icons following-user-icon">check_box</i>
-              {/*<i className="material-icons following-user-icon">person_add</i>*/}
-              {/*this icon is for when not following a user*/}
-            </button>
-          </div>
-        </div>
+        <Friend friendData={e} key={i}/>
       )
     })
 
