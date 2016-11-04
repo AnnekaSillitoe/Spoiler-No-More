@@ -37,6 +37,18 @@
   height: 3.6em;
 }
 
+.is-following {
+  display: block;
+}
+
+.not-following {
+  display: none;
+}
+
+.grey {
+  color: $color-icons;
+}
+
 .following-user-icon {
   color: $purple-dark;
   font-size: 8em;
