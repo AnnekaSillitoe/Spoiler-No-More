@@ -1,5 +1,4 @@
 const Hapi = require('hapi');
-const Path = require('path');
 const Inert = require('inert');
 const Env2 = require('env2')('config.env');
 const routes = require('./routes.js');

@@ -26,7 +26,6 @@
     "node-twitter-api": "^1.7.4",
     "nodemon": "^1.10.0",
     "oauth": "^0.9.14",
-    "path": "^0.12.7",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-router": "^2.7.0",

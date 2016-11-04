@@ -191,7 +191,7 @@ module.exports = [
     method: 'GET',
     path: '/profilepage',
     handler: (req, reply) => {
-      twitter.getTimeline('user_timeline', {user_id: 'annekasillitoe', count: 200}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+      twitter.getTimeline('user_timeline', {screen_name: 'annekasillitoe', count: 200}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {

@@ -3,14 +3,17 @@
 }
 
 .button-profile-box {
-  padding-right: 10%;
-  width: 10%;
+  padding-right: 8%;
   float: right;
   display: inline-block;
 }
 
 .button-following-box {
   width: 50%;
+  display: inline-block;
+}
+
+.profile-image-text {
   display: inline-block;
 }
 
@@ -119,7 +122,6 @@
   height: 150px;
   width: 150px;
   display: inline-block;
-  padding-top: 40px;
 }
 
 .profile-user-box {
@@ -163,9 +165,25 @@
 }
 
 .profile-image {
+  margin-top: 0;
   padding-top: 13%;
 }
 
 .text-box {
   width: 70%;
+}
+
+.settings-link {
+  display: block;
+}
+
+.profile-heading {
+  width: 100%;
+}
+
+.profile-profile-text {
+  display: inline-block;
+  width: 78%;
+  margin-left: 2%;
+  position: absolute;
 }
