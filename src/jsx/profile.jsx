@@ -146,9 +146,9 @@ class Profile extends React.Component{
                   <button className="button-profile-box"><Link to="/settings" className="settings-link">
                     <i className="material-icons settings-icon">settings</i>
                   </Link></button>
-                  <button className="button-profile-box">
+                {/*<button className="button-profile-box"><Link to="/accounts">
                   <i className="material-icons group-icon">group</i>
-                  </button>
+                </Link></button>*/}
                 </div>
                 <div className = "profile-image-text">
                   <div className="profile-user-image">

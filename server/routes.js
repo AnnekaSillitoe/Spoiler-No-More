@@ -292,6 +292,21 @@ module.exports = [
     }
   },
   {
+    method: 'POST',
+    path: '/sendtweet',
+    handler: (req, reply) => {
+      var updates = querystring.parse(req.payload);
+      console.log(updates);
+      twitter.statuses('update',{status: updates.tweet}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+        if (error) {
+          console.log(error);
+        } else {
+          reply(data);
+        }
+      });
+    }
+  },
+  {
     method: 'GET',
     path: '/{path*}',
     handler: function(request, reply) {
