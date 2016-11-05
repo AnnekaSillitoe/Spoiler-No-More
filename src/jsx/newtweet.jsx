@@ -13,6 +13,7 @@ class NewTweet extends React.Component{
     };
     this.updateTweet = this.updateTweet.bind(this);
     this.updateValue = this.updateValue.bind(this);
+    this.saveDraftTweet = this.saveDraftTweet.bind(this);
   }
 
   updateTweet() {
@@ -24,19 +25,30 @@ class NewTweet extends React.Component{
       }
     }.bind(this);
     xhr.open('POST', '/sendtweet');
-    console.log(this.state.tweet);
-    xhr.send(querystring.stringify(this.state.tweet));
+    xhr.send(querystring.stringify(this.state));
   }
 
   updateValue(value, event) {
-    var update = {};
-    update[value] = event.target.value;
-    this.setState({tweet: Object.assign(this.state.tweet, update)})
+    this.setState({tweet: event.target.value})
+  }
+
+  saveDraftTweet() {
+    if(localStorage.getItem('draftTweet')){
+      var draftArr = JSON.parse(localStorage.getItem('draftTweet'));
+      draftArr.push(this.state.tweet);
+      localStorage.setItem('draftTweet', JSON.stringify(draftArr));
+      this.context.router.push('/home');
+    } else {
+      var draft = [];
+      draft.push(this.state.tweet);
+      localStorage.setItem('draftTweet', JSON.stringify(draft));
+      this.context.router.push('/home');
+    }
   }
 
   render(){
     function editableTweet() {
-      return <textarea className="new-tweet-text-box" placeholder="Type your tweet here..." onKeyUp={this.updateValue.bind(null, "tweet")}></textarea>
+      return <textarea maxLength="140" className="new-tweet-text-box" placeholder="Type your tweet here..." onKeyUp={this.updateValue.bind(null, "tweet")}></textarea>
     };
 
     return (
@@ -52,7 +64,7 @@ class NewTweet extends React.Component{
                   </div>
                   <div className="tweet-buttons">
                     <button className="draft">
-                      <p className="draft-text">Save as Draft</p>
+                      <p className="draft-text"onClick={this.saveDraftTweet}>Save as Draft</p>
                     </button>
                     <button className="send" onClick={this.updateTweet}>
                       <p className="send-text">Send</p>

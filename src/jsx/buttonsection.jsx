@@ -35,7 +35,6 @@ class ButtonSection extends React.Component{
   }
 
   render(){
-    console.log(this.state);
     return (
       <div className = "button-section">
           <button className = "button-icon-box">

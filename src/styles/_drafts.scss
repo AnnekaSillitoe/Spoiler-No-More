@@ -1,0 +1,21 @@
+.drafts-timeline {
+  margin-bottom: 16%;
+}
+
+.drafts-box {
+  height: 11vh;
+  padding: 1% 0 3.5% 4%;
+  border-bottom: $border-line;
+  width: 94%;
+  margin-left: 1%;
+  overflow: hidden;
+}
+
+.drafts-draft-text {
+  margin-top: 0;
+  width: 97%;
+  margin-bottom: 0px;
+  font-size: 2.8em;
+  display: inline-block;
+  color: $purple-dark;
+}

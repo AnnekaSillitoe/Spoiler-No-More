@@ -2,6 +2,12 @@ import React from 'react';
 import TwitterLogo from './twitterlogo.jsx';
 
 class Login extends React.Component{
+  componentDidMount () {
+    if (document.cookie.indexOf('access') > -1 && document.cookie.indexOf('creds') > -1) {
+      this.context.router.push('/home')
+    }
+  }
+
   render(){
     return (
       <div className = 'wrapper'>
@@ -11,6 +17,10 @@ class Login extends React.Component{
       </div>
     )
   }
+}
+
+Login.contextTypes = {
+  router: React.PropTypes.object.isRequired
 }
 
 export default Login;

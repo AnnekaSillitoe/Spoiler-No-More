@@ -80,6 +80,9 @@ class Profile extends React.Component{
         <p className="time-since-tweet">{convertTime(e.time)}</p>
         </div>
       <ButtonSection/>
+      <button className="delete-button">
+        <i className="material-icons delete-icon">delete</i>
+      </button>
       </div>
     </div>
   );
