@@ -13,18 +13,26 @@ module.exports = [
     method: 'GET',
     path: '/',
     handler: (req, reply) => {
-      if (req.query.oauth_verifier){
+      if (!req.state.creds && req.query.oauth_verifier){
         twitter.getAccessToken(creds.requestToken, creds.requestTokenSecret, req.query.oauth_verifier, (error, accessToken, accessTokenSecret, results) => {
           if (error) {
             console.log(error);
           } else {
             creds.accessToken = accessToken;
             creds.accessTokenSecret = accessTokenSecret;
-            reply.file(__dirname + '/../public/index.html');
+            reply.file(__dirname + '/../public/index.html').state('creds', {'access': accessToken, 'secret': accessTokenSecret});
           }
         });
       } else {
-        reply.file(__dirname + '/../public/index.html');
+        twitter.verifyCredentials(req.state.creds.access, req.state.creds.secret, function(error, data, response) {
+          if (error) {
+            console.log(error);
+          } else {
+            var user = data["screen_name"];
+            var userId = data["id_str"];
+            reply.file(__dirname + '/../public/index.html').state('user', {username: user, userId: userId});
+          }
+        });
       }
     }
   },
@@ -39,7 +47,7 @@ module.exports = [
           creds.requestToken = requestToken;
           creds.requestTokenSecret = requestTokenSecret;
           if (creds.accessToken) {
-            reply.file(__dirname + '/../public/index.html');
+            reply.file(__dirname + '/../public/index.html').state('access', accessToken);
           } else {
             reply.redirect(`https://twitter.com/oauth/authenticate?oauth_token=${requestToken}`);
           }
@@ -51,9 +59,9 @@ module.exports = [
     method: 'GET',
     path: '/returndata',
     handler: (req, reply) => {
-      twitter.getTimeline('home', {count: 100}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+      twitter.getTimeline('home', {count: 100}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
-          console.log(error);
+          console.log(3, error);
         } else {
           data = data.map(formatTweet);
           reply(data);
@@ -65,12 +73,12 @@ module.exports = [
     method: 'GET',
     path: '/friendsid',
     handler: (req, reply) => {
-      twitter.friends('ids', {}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+      twitter.friends('ids', {}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {
           var ids = data.ids.splice(0, 99).join();
-          twitter.users('lookup', {user_id: ids}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+          twitter.users('lookup', {user_id: ids}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
             if (error) {
               console.log(error);
             } else {
@@ -94,7 +102,7 @@ module.exports = [
     method: 'GET',
     path: '/listsowned',
     handler: (req, reply) => {
-      twitter.lists('ownerships', {}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+      twitter.lists('ownerships', {}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {
@@ -115,7 +123,7 @@ module.exports = [
     method: 'GET',
     path: '/listmembersall/{id}/{slug}',
     handler: (req, reply) => {
-      twitter.lists('members', {slug: req.params.slug, owner_id: req.params.id}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+      twitter.lists('members', {slug: req.params.slug, owner_id: req.params.id}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {
@@ -136,7 +144,7 @@ module.exports = [
     method: 'GET',
     path: '/dms',
     handler: (req, reply) => {
-      twitter.direct_messages('sent', {count: 200}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+      twitter.direct_messages('sent', {count: 200}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {
@@ -163,7 +171,7 @@ module.exports = [
     method: 'GET',
     path: '/rts',
     handler: (req, reply) => {
-      twitter.getTimeline('mentions_timeline', {count: 200}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+      twitter.getTimeline('mentions_timeline', {count: 200}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {
@@ -192,7 +200,7 @@ module.exports = [
     method: 'GET',
     path: '/profilepage',
     handler: (req, reply) => {
-      twitter.getTimeline('user_timeline', {screen_name: 'annekasillitoe', count: 200}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+      twitter.getTimeline('user_timeline', {screen_name: req.state.user.username, count: 200}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {
@@ -207,7 +215,7 @@ module.exports = [
     path: '/profilepages',
     handler: (req, reply) => {
       var updates = querystring.parse(req.payload);
-      twitter.account('update_profile', {name: updates.name, location: updates.location, description: updates.profileText} , process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+      twitter.account('update_profile', {name: updates.name, location: updates.location, description: updates.profileText} , req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {
@@ -222,7 +230,7 @@ module.exports = [
     handler: (req, reply) => {
       var updates = querystring.parse(req.payload);
       console.log(updates);
-      twitter.lists('create', {name: updates.listName} , process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+      twitter.lists('create', {name: updates.listName} , req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {
@@ -237,7 +245,7 @@ module.exports = [
     handler: (req, reply) => {
       var updates = querystring.parse(req.payload);
       console.log(updates);
-      twitter.favorites('create', {id: updates.tweetId} , process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+      twitter.favorites('create', {id: updates.tweetId} , req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {
@@ -252,7 +260,7 @@ module.exports = [
     handler: (req, reply) => {
       var updates = querystring.parse(req.payload);
       console.log(updates);
-      twitter.favorites('destroy', {id: updates.tweetId} , process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+      twitter.favorites('destroy', {id: updates.tweetId} , req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {
@@ -267,7 +275,7 @@ module.exports = [
     handler: (req, reply) => {
       var updates = querystring.parse(req.payload);
       console.log(updates);
-      twitter.friendships('destroy',{user_id: updates.id}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+      twitter.friendships('destroy',{user_id: updates.id}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {
@@ -282,7 +290,7 @@ module.exports = [
     handler: (req, reply) => {
       var updates = querystring.parse(req.payload);
       console.log(updates);
-      twitter.friendships('create',{user_id: updates.id}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+      twitter.friendships('create',{user_id: updates.id}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {
@@ -297,7 +305,7 @@ module.exports = [
     handler: (req, reply) => {
       var updates = querystring.parse(req.payload);
       console.log(updates);
-      twitter.statuses('update',{status: updates.tweet}, process.env.ACCESS_TOKEN, process.env.ACCESS_TOKEN_SECRET, (error, data, response) => {
+      twitter.statuses('update',{status: updates.tweet}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {

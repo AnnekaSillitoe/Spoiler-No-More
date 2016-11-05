@@ -9,6 +9,24 @@ server.connection({port: process.env.BASE_URL});
 server.register([Inert], (err) => {
   server.route(routes);
 
+  server.state('creds', {
+    ttl: null,
+    isSecure: false,
+    isHttpOnly: false,
+    encoding: 'base64json',
+    clearInvalid: false,
+    strictHeader: true
+  });
+
+  server.state('user', {
+    ttl: null,
+    isSecure: false,
+    isHttpOnly: false,
+    encoding: 'base64json',
+    clearInvalid: false,
+    strictHeader: true
+  });
+
   server.start((err) => {
     if (err) {
       throw err;

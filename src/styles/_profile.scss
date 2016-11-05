@@ -187,3 +187,14 @@
   margin-left: 2%;
   position: absolute;
 }
+
+.delete-button {
+  margin-left: 4%;
+}
+
+.delete-icon {
+  color: $color-icons;
+  font-size: 4.5em;
+  display: inline-block;
+  float: right;
+}
