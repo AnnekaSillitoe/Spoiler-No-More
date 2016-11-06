@@ -1,0 +1,13 @@
+textarea.block-user-text-box {
+  margin-top: 3%;
+  color: $color-icons;
+  @include karla;
+  font-size: 3em;
+  text-align: center;
+  margin-left: 7%;
+  width: 85%;
+}
+
+.block-list {
+  margin-bottom: 16%;
+}

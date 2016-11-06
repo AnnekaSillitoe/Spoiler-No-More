@@ -100,6 +100,28 @@ module.exports = [
   },
   {
     method: 'GET',
+    path: '/blocked',
+    handler: (req, reply) => {
+      twitter.blocks('list', {}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
+        if (error) {
+          console.log(error);
+        } else {
+          data = data.users.map(el => {
+            return {
+              name: el.name,
+              screen_name: el.screen_name,
+              description: el.description,
+              profile_image: el.profile_image_url,
+              id: el.id_str
+            };
+          });
+          reply(data);
+        }
+      });
+    }
+  },
+  {
+    method: 'GET',
     path: '/listsowned',
     handler: (req, reply) => {
       twitter.lists('ownerships', {}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {

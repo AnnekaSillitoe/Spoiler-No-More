@@ -18,13 +18,13 @@ class Settings extends React.Component{
           <button className="settings-text">Turn off Retweets</button>
         </div>
         <div className="settings-box">
-          <button className="settings-text">Block Users</button>
+          <button className="settings-text"><Link to='/block'>Block Users</Link></button>
         </div>
         <div className="settings-box">
           <button className="settings-text">Notification Settings</button>
         </div>
         <div className="settings-box">
-          <button className="settings-text">Display Settings</button>
+          <button className="settings-text"><Link to='/display'>Display Settings</Link></button>
         </div>
         <div className="settings-box">
           <button className="settings-text">About</button>

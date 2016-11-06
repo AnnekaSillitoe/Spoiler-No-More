@@ -17,6 +17,7 @@ import Settings from './settings.jsx';
 import NewTweet from './newtweet.jsx';
 import Timeout from './timeout.jsx';
 import Drafts from './drafts.jsx';
+import Block from './block.jsx';
 
 const routes =
   <Route path='/'>
@@ -36,6 +37,7 @@ const routes =
     <Route path="/newtweet" component = { NewTweet }/>
     <Route path="/timeout" component = { Timeout }/>
     <Route path="/drafts" component = { Drafts }/>
+    <Route path="/block" component = { Block }/>
   </Route>
 
 
