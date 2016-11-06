@@ -26,7 +26,7 @@ class Tweets extends React.Component{
 
   render(){
     var tl = this.state.profile.map((e, i) => {
-    return (
+      return (
       <div className="tweets">
         <div className="user-heading">
           <p className="username">{e.name}</p>

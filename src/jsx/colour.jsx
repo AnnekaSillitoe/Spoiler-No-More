@@ -1,6 +1,7 @@
 import React from 'react';
 import TopBar from './topbar.jsx';
 import BottomBar from './bottombar.jsx';
+import { Link } from 'react-router';
 
 class Colour extends React.Component{
   render(){
@@ -8,9 +9,9 @@ class Colour extends React.Component{
       <div>
         <TopBar/>
         <div className="colour-top-text">
-          <button className="arrow-button">
+          <button className="arrow-button"><Link to='/settings'>
               <i className="material-icons back-arrow">keyboard_arrow_left</i>
-          </button>
+          </Link></button>
           <p className="select-colour-text">Select which colour you’d like to use:</p>
         </div>
         <div className="blue-box">
