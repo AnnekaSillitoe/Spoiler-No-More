@@ -212,6 +212,21 @@ module.exports = [
   },
   {
     method: 'POST',
+    path: '/deleteatweet',
+    handler: (req, reply) => {
+      var updates = querystring.parse(req.payload);
+      console.log(updates);
+      twitter.statuses('destroy', {id: updates.id}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
+        if (error) {
+          console.log(error);
+        } else {
+          reply(data);
+        }
+      });
+    }
+  },
+  {
+    method: 'POST',
     path: '/profilepages',
     handler: (req, reply) => {
       var updates = querystring.parse(req.payload);

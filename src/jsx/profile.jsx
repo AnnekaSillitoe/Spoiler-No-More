@@ -14,10 +14,25 @@ class Profile extends React.Component{
       profile: {},
       profileUpdates: {},
       editable: false,
-      tweets: []
+      tweets: [],
     };
     this.updateProfile = this.updateProfile.bind(this);
     this.updateValue = this.updateValue.bind(this);
+    this.deleteATweet = this.deleteATweet.bind(this);
+  }
+
+  deleteATweet(id) {
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        var getTweets = this.state.tweets;
+        var deletedTweet = getTweets.findIndex(e => e.id === id);
+        getTweets.splice(deletedTweet, 1);
+        this.setState({tweets: getTweets});
+      }
+    }.bind(this);
+    xhr.open('POST', '/deleteatweet');
+    xhr.send(querystring.stringify({id: id}));
   }
 
   componentWillMount() {
@@ -80,9 +95,9 @@ class Profile extends React.Component{
         <p className="time-since-tweet">{convertTime(e.time)}</p>
         </div>
       <ButtonSection/>
-      <button className="delete-button">
-        <i className="material-icons delete-icon">delete</i>
-      </button>
+        <button className="delete-button">
+          <i className="material-icons delete-icon" onClick={this.deleteATweet.bind(null, e.id)}>delete</i>
+        </button>
       </div>
     </div>
   );
