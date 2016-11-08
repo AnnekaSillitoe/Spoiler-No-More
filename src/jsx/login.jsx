@@ -3,7 +3,7 @@ import TwitterLogo from './twitterlogo.jsx';
 
 class Login extends React.Component{
   componentDidMount () {
-    if (document.cookie.indexOf('access') > -1 && document.cookie.indexOf('creds') > -1) {
+    if (document.cookie.indexOf('creds') > -1) {
       this.context.router.push('/home')
     }
   }

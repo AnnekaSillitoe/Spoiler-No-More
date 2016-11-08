@@ -1,18 +1,17 @@
 import React from 'react';
 import TopBar from './topbar.jsx';
 import BottomBar from './bottombar.jsx';
-import TopSliderLists from './topsliderlists.jsx';
+import TopSliderNoLinks from './topslidernolinks.jsx';
 import ListOfLists from './listoflists.jsx';
 import { Link } from 'react-router';
 
-class Lists extends React.Component{
+class RetweetNotifications extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
       lists: []
     }
   }
-
   componentWillMount() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
@@ -33,16 +32,21 @@ class Lists extends React.Component{
 
     return (
       <div>
-        <TopBar/>
-        <TopSliderLists/>
-        <button className="lists-button"><Link to="/createnewlist"><i className="material-icons add-new-list">add_circle</i></Link></button>
-          <div className="lists-list">
-            {listsowned}
-          </div>
-        <BottomBar/>
+          <TopBar/>
+            <div className="colour-top-text">
+              <button className="arrow-button"><Link to='/settings'>
+                  <i className="material-icons back-arrow">keyboard_arrow_left</i>
+              </Link></button>
+              <p className="select-colour-text">Select who you would like to turn retweets off for:</p>
+            </div>
+            <TopSliderNoLinks/>
+              <div className="timeout-list">
+                {listsowned}
+              </div>
+            <BottomBar/>
       </div>
     )
   }
 }
 
-export default Lists;
+export default RetweetNotifications;
