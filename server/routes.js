@@ -23,7 +23,7 @@ module.exports = [
             reply.file(__dirname + '/../public/index.html').state('creds', {'access': accessToken, 'secret': accessTokenSecret});
           }
         });
-      } else {
+      } else if (req.state.creds){
         twitter.verifyCredentials(req.state.creds.access, req.state.creds.secret, function(error, data, response) {
           if (error) {
             console.log(error);
@@ -33,6 +33,8 @@ module.exports = [
             reply.file(__dirname + '/../public/index.html').state('user', {username: user, userId: userId});
           }
         });
+      } else {
+        reply.redirect('/twitterlogin');
       }
     }
   },
@@ -47,7 +49,7 @@ module.exports = [
           creds.requestToken = requestToken;
           creds.requestTokenSecret = requestTokenSecret;
           if (creds.accessToken) {
-            reply.file(__dirname + '/../public/index.html').state('access', accessToken);
+            reply.file(__dirname + '/../public/index.html').state('creds', {access: creds.accessToken, secret: creds.accessTokenSecret});
           } else {
             reply.redirect(`https://twitter.com/oauth/authenticate?oauth_token=${requestToken}`);
           }
@@ -59,11 +61,24 @@ module.exports = [
     method: 'GET',
     path: '/returndata',
     handler: (req, reply) => {
-      twitter.getTimeline('home', {count: 100}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
+      twitter.getTimeline('home', {count: 200}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
-          console.log(3, error);
+          console.log(error);
         } else {
           data = data.map(formatTweet);
+          reply(data);
+        }
+      });
+    }
+  },
+  {
+    method: 'GET',
+    path: '/testsearch',
+    handler: (req, reply) => {
+      twitter.users("lookup", {screen_name: "nadinebphoto"}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
+        if (error) {
+          console.log(error);
+        } else {
           reply(data);
         }
       });
@@ -222,6 +237,24 @@ module.exports = [
     method: 'GET',
     path: '/profilepage',
     handler: (req, reply) => {
+      if (!req.state.user.username) {
+        twitter.verifyCredentials(req.state.creds.access, req.state.creds.secret, function(error, data, response) {
+          if (error) {
+            console.log(error);
+          } else {
+            var user = data["screen_name"];
+            var userId = data["id_str"];
+            twitter.getTimeline('user_timeline', {screen_name: user, count: 200}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
+              if (error) {
+                console.log(error);
+              } else {
+                data = data.map(formatTweet);
+                reply(data).state('user', {username: user, userId: userId});;
+              }
+            });
+          }
+        })
+      }
       twitter.getTimeline('user_timeline', {screen_name: req.state.user.username, count: 200}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
           console.log(error);
@@ -237,7 +270,6 @@ module.exports = [
     path: '/deleteatweet',
     handler: (req, reply) => {
       var updates = querystring.parse(req.payload);
-      console.log(updates);
       twitter.statuses('destroy', {id: updates.id}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
           console.log(error);
@@ -266,7 +298,6 @@ module.exports = [
     path: '/createlists',
     handler: (req, reply) => {
       var updates = querystring.parse(req.payload);
-      console.log(updates);
       twitter.lists('create', {name: updates.listName} , req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
           console.log(error);
@@ -281,7 +312,6 @@ module.exports = [
     path: '/favouritetweet',
     handler: (req, reply) => {
       var updates = querystring.parse(req.payload);
-      console.log(updates);
       twitter.favorites('create', {id: updates.tweetId} , req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
           console.log(error);
@@ -296,7 +326,6 @@ module.exports = [
     path: '/unfavouritetweet',
     handler: (req, reply) => {
       var updates = querystring.parse(req.payload);
-      console.log(updates);
       twitter.favorites('destroy', {id: updates.tweetId} , req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
           console.log(error);
@@ -311,7 +340,6 @@ module.exports = [
     path: '/unfriend',
     handler: (req, reply) => {
       var updates = querystring.parse(req.payload);
-      console.log(updates);
       twitter.friendships('destroy',{user_id: updates.id}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
           console.log(error);
@@ -326,7 +354,6 @@ module.exports = [
     path: '/refriend',
     handler: (req, reply) => {
       var updates = querystring.parse(req.payload);
-      console.log(updates);
       twitter.friendships('create',{user_id: updates.id}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
           console.log(error);
@@ -341,8 +368,49 @@ module.exports = [
     path: '/sendtweet',
     handler: (req, reply) => {
       var updates = querystring.parse(req.payload);
-      console.log(updates);
       twitter.statuses('update',{status: updates.tweet}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
+        if (error) {
+          console.log(error);
+        } else {
+          reply(data);
+        }
+      });
+    }
+  },
+  {
+    method: 'POST',
+    path: '/blockuser',
+    handler: (req, reply) => {
+      var updates = querystring.parse(req.payload);
+      twitter.blocks('destroy',{user_id: updates.id}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
+        if (error) {
+          console.log(error);
+        } else {
+          reply(data);
+        }
+      });
+    }
+  },
+  {
+    method: 'POST',
+    path: '/createblockuser',
+    handler: (req, reply) => {
+      var updates = querystring.parse(req.payload);
+      twitter.blocks('create',{screen_name: updates.screen_name}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
+        if (error) {
+          console.log(error);
+        } else {
+          reply(data);
+        }
+      });
+    }
+  },
+  {
+    method: 'POST',
+    path: '/reblockuser',
+    handler: (req, reply) => {
+      var updates = querystring.parse(req.payload);
+      twitter.blocks('create',{user_id: updates.id}, req.state.creds.access, req.state.creds.secret, (error, data, response) => {
         if (error) {
           console.log(error);
         } else {

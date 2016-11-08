@@ -2,15 +2,21 @@ import React from 'react';
 import TopBar from './topbar.jsx';
 import BottomBar from './bottombar.jsx';
 import TopSliderLists from './topsliderlists.jsx';
-import Friend from './friend.jsx';
+import BlockUser from './blockuser.jsx';
 import { Link } from 'react-router';
+
+const querystring = require('querystring');
 
 class Block extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
       blocked: [],
+      userblocked: true,
+      blockuser: '',
     };
+    this.updateUsersBlock = this.updateUsersBlock.bind(this);
+    this.updateValue = this.updateValue.bind(this);
   }
 
   componentWillMount() {
@@ -26,29 +32,37 @@ class Block extends React.Component{
     xhr.send();
   }
 
+  updateUsersBlock() {
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        this.componentWillMount();
+      }
+    }.bind(this)
+    xhr.open('POST', '/createblockuser');
+    xhr.send(querystring.stringify({screen_name: this.state.blockuser}));
+  };
+
+  updateValue(value, event) {
+    this.setState({blockuser: event.target.value})
+  }
+
   render(){
     var friendslist = this.state.blocked.map((e, i) => {
       return (
-        <div key={i} className="account-box">
-          <div className="image-square">
-            <img src={e.profile_image} height="150px" width="150px"></img>
-          </div>
-          <div className="user-text">
-            <p className="username">{e.name}</p>
-            <p className="at-username">@{e.screen_name}</p>
-          </div>
-          <div className="profile-text">
-            <p className="following-user-text">{e.description}</p>
-              <button className="following-button">
-                <i className="material-icons following-user-icon red">block</i>
-              </button>
-          </div>
-        </div>
+        <BlockUser blockData={e} key={i}/>
       )
-    })
+    });
 
     function editableBlock() {
-      return <textarea maxLength="140" className="block-user-text-box" placeholder="Type here..."></textarea>
+      return(
+        <div>
+          <textarea maxLength="140" className="block-user-text-box" placeholder="Type here..." onKeyUp={this.updateValue.bind(null, "blockuser")}></textarea>
+          <button className="edit-profile-box">
+              <i className="material-icons submit-check-icon" onClick={this.updateUsersBlock}>check</i>
+          </button>
+          </div>
+        )
     };
 
     return (

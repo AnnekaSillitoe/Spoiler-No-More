@@ -3,6 +3,7 @@ import TopBar from './topbar.jsx';
 import BottomBar from './bottombar.jsx';
 import convertTime from '../helpers/converttime.js';
 import ButtonSection from './buttonsection.jsx';
+import Tweets from './tweets.jsx';
 
 class Home extends React.Component{
   constructor(props) {
@@ -27,26 +28,7 @@ class Home extends React.Component{
 
   render(){
     var tl = this.state.timeline.map((e, i) => {
-      return (
-        <div key={i} className="user-box">
-          <div className="user-heading">
-            <p className="username">{e.name}</p>
-            <p className="at-username">@{e.username}</p>
-          </div>
-          <div className="user-image">
-            <img src={e.profileImage} height="150px" width="150px"></img>
-          </div>
-          <div className="profile-text">
-            <p className="messages-user-text">{e.text}</p>
-          </div>
-          <div className="mini-button-section">
-            <div className="tweet-time">
-              <p className="time-since-tweet">{convertTime(e.time)}</p>
-            </div>
-            <ButtonSection tweetId={e.id} favorited={e.favorited}/>
-          </div>
-        </div>
-      )
+      return <Tweets tweetData={e} key={i}/>
     })
 
     return (
