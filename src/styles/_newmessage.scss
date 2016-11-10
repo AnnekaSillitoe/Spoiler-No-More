@@ -1,0 +1,65 @@
+.close-message {
+  float: right;
+  margin-top: 3%;
+  margin-right: 3%;
+  display: inline-block;
+}
+
+.to-box {
+  width: 80%;
+  display: inline-block;
+  height: 8vh;
+}
+
+.to-text-box {
+  margin-top: 4%;
+  height: 5vh;
+  margin-left: 11%;
+  font-size: 3em;
+  width: 88%;
+  display: inline-block;
+  @include karla;
+}
+
+.to {
+  width: 17%;
+  position: absolute;
+  top: 27%;
+  display: inline-block;
+  font-size: 3em;
+  @include karla;
+}
+
+.new-message-text-box {
+  font-size: 2em;
+  height: 4vh;
+  width: 80%;
+  position: absolute;
+  bottom: 9%;
+  left: 6%;
+  @include karla;
+  display: inline-block;
+}
+
+.send-icon {
+  font-size: 3em;
+  color: $purple-dark;
+  display: inline-block;
+  float: right;
+  width: 5%;
+  position: absolute;
+  bottom: 11%;
+  left: 91%;
+}
+
+.middle-bar {
+  background-color: $purple-main;
+  padding: 1%;
+  margin: 0px;
+  left: 0;
+  top: 16%;
+  height: 1%;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
