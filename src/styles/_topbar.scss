@@ -21,6 +21,7 @@
 
 .speech-icon {
   font-size: 8em;
+  color: $purple-light;
 }
 
 .top-button-1 {
@@ -30,10 +31,32 @@
   margin-left: 2%;
 }
 
-.top-button-2 {
-  width: 10%;
-  height: 100%;
+.right-buttons {
+  width: 35%;
   float: right;
-  margin-right: 3%;
+}
+
+.top-button-2 {
+  margin-left: 20%;
   display: inline-block;
+}
+
+.top-button-3 {
+  float: right;
+  display: inline-block;
+  margin-right: 10%;
+}
+
+.dropdown-menu {
+  text-align: center;
+  padding: 2%;
+  background-color: white;
+  border: $border-line;
+}
+
+.menu-text {
+  @include karla;
+  color: $purple-dark;
+  font-size: 3em;
+  line-height: 1.5;
 }

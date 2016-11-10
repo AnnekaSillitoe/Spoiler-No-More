@@ -19,6 +19,7 @@ import Timeout from './timeout.jsx';
 import Drafts from './drafts.jsx';
 import Block from './block.jsx';
 import RetweetNotifications from './retweetnotifications.jsx';
+import NewMessage from './newmessage.jsx';
 
 const routes =
   <Route path='/'>
@@ -40,6 +41,7 @@ const routes =
     <Route path="/drafts" component = { Drafts }/>
     <Route path="/block" component = { Block }/>
     <Route path='/retweetnotifications' component = { RetweetNotifications }/>
+    <Route path="/newmessage" component = { NewMessage }/>
   </Route>
 
 
