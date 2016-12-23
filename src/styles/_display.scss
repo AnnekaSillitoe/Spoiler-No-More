@@ -6,6 +6,11 @@
 
 $display-box: block;
 
+@mixin box {
+  display: $display-box;
+  border-bottom: $border-line;
+}
+
 .colour-top-text {
     left: 0;
     background-color: white;
@@ -57,27 +62,24 @@ $display-box: block;
 }
 
 .blue-box {
-  display: $display-box;
+  @include box;
   padding: 0 0px 4% 4%;
-  border-bottom: $border-line;
+
 }
 
 .green-box {
-  display: $display-box;
+  @include box;
   padding: 4% 0 4% 4%;
-  border-bottom: $border-line;
 }
 
 .pink-box {
-  display: $display-box;
+  @include box;
   padding: 4% 0 4% 4%;
-  border-bottom: $border-line;
 }
 
 .purple-box {
-  display: $display-box;
+  @include box;
   padding: 4% 0 4% 4%;
-  border-bottom: $border-line;
 }
 
 .arrow-button {

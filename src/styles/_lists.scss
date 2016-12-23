@@ -1,6 +1,7 @@
 .listmembers-timeline {
+  padding-top: 26%;
   margin-bottom: 16%;
-  padding-top: 14%;
+  width: 100%;
 }
 
 .lists-following {
@@ -13,14 +14,8 @@
 }
 
 .top-slider {
-  left: 0;
+  @include slider;
   margin-top: 12%;
-  padding-bottom: 3%;
-  background-color: white;
-  width: 100%;
-  text-align: center;
-  position: fixed;
-  z-index: 100;
 }
 
 .lists-following:first-of-type {

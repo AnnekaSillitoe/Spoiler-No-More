@@ -1,4 +1,5 @@
 import React from 'react';
+import ReplyTweet from './replytweet.jsx';
 import { Link } from 'react-router';
 
 const querystring = require('querystring');
@@ -38,7 +39,7 @@ class ButtonSection extends React.Component{
     return (
       <div className = "button-section">
           <button className = "button-icon-box">
-            <i className="material-icons repeat-icon">reply</i>
+            <Link to="/reply"><i className="material-icons repeat-icon">reply</i></Link>
           </button>
           <button className = "button-icon-box">
             <i className="material-icons repeat-icon">repeat</i>

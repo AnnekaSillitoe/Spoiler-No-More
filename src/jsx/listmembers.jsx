@@ -32,7 +32,7 @@ class ListMembers extends React.Component{
             <p className="at-username">@{e.screen_name}</p>
           </div>
           <div className="user-image">
-            <img src={e.profile_image} height="150px" width="150px"></img>
+            <img src={e.profile_image}></img>
           </div>
           <div className="profile-text">
             <p className="messages-user-text">{e.text}</p>
@@ -44,6 +44,7 @@ class ListMembers extends React.Component{
     return (
       <div>
         <TopBar/>
+        <div className="list-title">slug</div>
         <div className="listmembers-timeline">
           {members}
         </div>

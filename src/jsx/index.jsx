@@ -4,7 +4,7 @@ import { Router, Route, IndexRoute, hashHistory} from 'react-router';
 
 import Login from './login.jsx';
 import Home from './home.jsx';
-import Colour from './colour.jsx';
+import Display from './display.jsx';
 import Accounts from './accounts.jsx';
 import Profile from './profile.jsx';
 import Lists from './lists.jsx';
@@ -20,13 +20,14 @@ import Drafts from './drafts.jsx';
 import Block from './block.jsx';
 import RetweetNotifications from './retweetnotifications.jsx';
 import NewMessage from './newmessage.jsx';
+import ReplyTweet from './replytweet.jsx';
 
 const routes =
   <Route path='/'>
     <IndexRoute component={ Login }/>
     <Route path='/login'component = { Login }/>
     <Route path='/home'component = { Home }/>
-    <Route path='/display'component = { Colour }/>
+    <Route path='/display'component = { Display }/>
     <Route path='/accounts'component = { Accounts }/>
     <Route path='/lists'component = { Lists }/>
     <Route path='/following'component = { Following }/>
@@ -42,6 +43,7 @@ const routes =
     <Route path="/block" component = { Block }/>
     <Route path='/retweetnotifications' component = { RetweetNotifications }/>
     <Route path="/newmessage" component = { NewMessage }/>
+    <Route path="/reply" component = { ReplyTweet }/>
   </Route>
 
 

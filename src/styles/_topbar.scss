@@ -10,18 +10,8 @@
   z-index: 1000;
 }
 
-.search-icon {
-  font-size: 8em;
-  color: $purple-light;
-}
-
-.timeout-icon {
-  font-size: 8em;
-}
-
-.speech-icon {
-  font-size: 8em;
-  color: $purple-light;
+.search-icon, .timeout-icon, .speech-icon {
+  @include bar-icons;
 }
 
 .top-button-1 {
