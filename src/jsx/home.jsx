@@ -19,12 +19,12 @@ class Home extends React.Component{
       if (xhr.readyState === 4 && xhr.status === 200) {
         this.setState({
           timeline: JSON.parse(xhr.response)
-        });
+        })
       }
     }.bind(this);
     xhr.open('GET', '/returndata');
     xhr.send();
-  }
+  };
 
   render(){
     var tl = this.state.timeline.map((e, i) => {

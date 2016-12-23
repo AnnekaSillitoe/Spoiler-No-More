@@ -9,21 +9,13 @@
   position:fixed;
 }
 
-.home-icon {
-  font-size: 8em;
-}
-
-.lists-icon {
-  font-size: 8em;
-}
-
-.profile-icon {
-  font-size: 8em;
+.home-icon, .lists-icon, .profile-icon {
+  @include bar-icons;
 }
 
 .message-icon {
-  width: 88px;
   font-size: 8em;
+  width: 1em;
 }
 
 .icon-box {

@@ -3,7 +3,7 @@ import TopBar from './topbar.jsx';
 import BottomBar from './bottombar.jsx';
 import { Link } from 'react-router';
 
-class Colour extends React.Component{
+class Display extends React.Component{
   render(){
     return (
       <div>
@@ -36,4 +36,4 @@ class Colour extends React.Component{
   }
 }
 
-export default Colour;
+export default Display;

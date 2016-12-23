@@ -24,18 +24,8 @@
   padding-right: 1%;
 }
 
-.edit-icon {
-  padding-top: 2%;
-  float: right;
-  font-size: 3em;
-  color: $color-icons;
-}
-
-.check-icon {
-  padding-top: 2%;
-  float: right;
-  font-size: 3em;
-  color: $color-icons;
+.check-icon, .edit-icon {
+  @include profile-icons;
 }
 
 .hidden {
@@ -119,14 +109,14 @@
 }
 
 .profile-user-image {
-  height: 150px;
-  width: 150px;
+  height: 9.5em;
+  width: 10em;
   display: inline-block;
 }
 
 .profile-user-box {
-  width: 91%;
-  padding: 0 3%;
+  width: 92%;
+  padding: 1% 3%;
   margin-left: 1%;
   border-bottom: $border-line;
 }
