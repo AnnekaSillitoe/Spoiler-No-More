@@ -44,7 +44,7 @@ class ListMembers extends React.Component{
     return (
       <div>
         <TopBar/>
-        <div className="list-title">slug</div>
+        <div className="list-title">{this.props.params.slug.charAt(0).toUpperCase() + this.props.params.slug.substr(1)}</div>
         <div className="listmembers-timeline">
           {members}
         </div>
