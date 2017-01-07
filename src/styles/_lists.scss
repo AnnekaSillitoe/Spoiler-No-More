@@ -1,5 +1,16 @@
+.list-title{
+  @include karla;
+  font-size: 4em;
+  color: $purple-main;
+  text-align: center;
+  border-bottom: 2px solid $purple-dark;
+  padding: 14% 0 1% 0;
+  width: 40%;
+  margin: auto;
+}
+
 .listmembers-timeline {
-  padding-top: 26%;
+  padding-top: 2%;
   margin-bottom: 16%;
   width: 100%;
 }
