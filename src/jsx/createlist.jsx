@@ -1,6 +1,7 @@
 import React from 'react';
 import TopBar from './topbar.jsx';
 import BottomBar from './bottombar.jsx';
+import { Link } from 'react-router';
 
 const querystring = require('querystring');
 
@@ -34,8 +35,11 @@ class CreateLists extends React.Component{
     return (
       <div>
         <TopBar/>
-        <div className="top-text">
-          <p className="select-account">What would you like to name your new list?</p>
+        <div className="colour-top-text">
+          <button className="arrow-button"><Link to='/lists'>
+              <i className="material-icons back-arrow">keyboard_arrow_left</i>
+          </Link></button>
+        <p className="select-colour-text">What would you like to name your new list?</p>
         </div>
         <div className="lists-box">
           <input className="profile-username text-box lists-text-box" type="text" defaultValue="Enter a name" onKeyUp={this.updateValue}></input>
