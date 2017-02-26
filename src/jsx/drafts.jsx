@@ -1,6 +1,7 @@
 import React from 'react';
 import TopBar from './topbar.jsx';
 import BottomBar from './bottombar.jsx';
+import { Link } from 'react-router';
 
 class Drafts extends React.Component{
 
@@ -21,8 +22,11 @@ class Drafts extends React.Component{
     return (
       <div>
         <TopBar/>
-        <div className="top-text">
-          <p className="select-account">Drafts</p>
+        <div className="drafts-top-text">
+          <button className="arrow-button drafts-arrow-button"><Link to='/settings'>
+              <i className="material-icons back-arrow">keyboard_arrow_left</i>
+          </Link></button>
+        <p className="drafts-text">Drafts</p>
         </div>
         <div className="drafts-timeline">
           {this.returnTweets()}

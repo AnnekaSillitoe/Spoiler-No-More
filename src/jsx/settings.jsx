@@ -15,7 +15,7 @@ class Settings extends React.Component{
           <button className="settings-text"><Link to='/drafts'>Drafts</Link></button>
         </div>
         <div className="settings-box">
-          <button className="settings-text">Turn off Retweets</button>
+          <button className="settings-text"><Link to='/turnonrts'>Turn off Retweets</Link></button>
         </div>
         <div className="settings-box">
           <button className="settings-text"><Link to='/block'>Block Users</Link></button>
