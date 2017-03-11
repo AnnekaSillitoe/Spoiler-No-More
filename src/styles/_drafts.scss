@@ -18,3 +18,23 @@
   display: inline-block;
   color: $purple-dark;
 }
+
+.drafts-text {
+  color: $purple-light;
+  text-align: center;
+  font-size: 3em;
+  margin-left: 0;
+  margin-top: 14%;
+  width: 80%;
+  display: inline-block;
+}
+
+.drafts-top-text {
+  left: 0;
+  background-color: white;
+  width: 100%;
+}
+
+.drafts-arrow-button {
+  vertical-align: middle;
+}
