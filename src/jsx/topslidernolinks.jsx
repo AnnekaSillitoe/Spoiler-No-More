@@ -7,8 +7,8 @@ class TopSliderNoLinks extends React.Component{
   render(){
     return (
       <div className="top-slider-no-links">
-        <button className="lists-following">Lists</button>
-        <button className="lists-following">Following</button>
+          <button className="lists-following"><Link to={"/liststimeout"}>Lists</Link></button>
+          <button className="lists-following"><Link to={"/followingtimeout"}>Following</Link></button>
       </div>
     )
   }
