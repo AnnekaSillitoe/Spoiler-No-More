@@ -14,29 +14,34 @@
   display: none;
 }
 .onoffswitch-label {
-  display: block; overflow: hidden; cursor: pointer;
-  border: 2px solid #B3B3B3; border-radius: 50px;
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 50px;
 }
 .onoffswitch-inner {
-  display: block; width: 200%; margin-left: -100%;
+  display: block;
+  width: 200%;
+  margin-left: -100%;
   transition: margin 0.3s ease-in 0s;
 }
 .onoffswitch-inner:before, .onoffswitch-inner:after {
-  display: block; float: left; width: 50%;
+  display: block;
+  float: left;
+  width: 50%;
   height: 3vh;
   padding: 0;
-  color: white;
   box-sizing: border-box;
 }
 .onoffswitch-inner:before {
   content: "";
   padding-left: 10px;
-  background-color: #7B529E; color: #FFFFFF;
+  background-color: #7B529E;
 }
 .onoffswitch-inner:after {
   content: "";
   padding-right: 10px;
-  background-color: #B99FC2; color: #D1D1D1;
+  background-color: #B99FC2;
 }
 .onoffswitch-switch {
   display: block;
