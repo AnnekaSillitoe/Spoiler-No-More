@@ -3,6 +3,7 @@ import TopBar from './topbar.jsx';
 import BottomBar from './bottombar.jsx';
 import TopSliderNoLinks from './topslidernolinks.jsx';
 import FriendTimeout from './friendtimeout.jsx';
+import TimeoutLists from './timeoutlists.jsx';
 
 class TimeoutFollowing extends React.Component{
     constructor(props) {
@@ -36,16 +37,14 @@ class TimeoutFollowing extends React.Component{
         return (
             <div>
                 <TopBar/>
-                <div className="top-text">
-                    <p className="select-account">Who would you like to timeout:</p>
+                <div className="top-text top-text-timeout">
+                    <p className="select-account-timeout select-account">Who would you like to timeout:</p>
+                    <TopSliderNoLinks/>
                 </div>
-                <TopSliderNoLinks/>
                 <div className="timeout-list">
                     {friendslist}
                 </div>
-                <button className="following-button">
-                    <i className="material-icons following-user-icon">check_box</i>
-                </button>
+                    {TimeoutLists}
                 <BottomBar/>
             </div>
         )

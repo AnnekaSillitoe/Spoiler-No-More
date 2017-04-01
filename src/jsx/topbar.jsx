@@ -6,9 +6,9 @@ class TopBar extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      dropDown: false,
-    }
-    this.onClickDropDown = this.onClickDropDown.bind(this)
+      dropDown: false
+    };
+    this.onClickDropDown = this.onClickDropDown.bind(this);
   }
 
   onClickDropDown() {

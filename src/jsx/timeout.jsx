@@ -34,10 +34,10 @@ class Timeout extends React.Component{
     return (
       <div>
         <TopBar/>
-        <div className="top-text">
-          <p className="select-account">Who would you like to timeout:</p>
+        <div className="top-text top-text-timeout">
+          <p className="select-account-timeout select-account">Who would you like to timeout:</p>
+          <TopSliderNoLinks/>
         </div>
-        <TopSliderNoLinks/>
           <div className="timeout-list">
             {listsowned}
           </div>

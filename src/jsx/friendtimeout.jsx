@@ -1,15 +1,26 @@
 import React from 'react';
+import TimeoutOn from "../helpers/timeouton.jsx";
 
 class FriendTimeout extends React.Component{
     constructor(props) {
         super(props);
+        this.state = {
+            timeout: false
+        };
+        this.timeoutState = this.timeoutState.bind(this);
+    }
+
+    timeoutState() {
+        this.setState({
+            timeout: !this.state.timeout
+        });
     }
 
     render(){
         return (
             <div className="account-box">
                 <div className="image-square">
-                    <img src={this.props.friendData.profile_image} height="150px" width="150px"></img>
+                    <img src={this.props.friendData.profile_image} height="150px" width="150px"/>
                 </div>
                 <div className="user-text">
                     <p className="username">{this.props.friendData.name}</p>
@@ -17,9 +28,7 @@ class FriendTimeout extends React.Component{
                 </div>
                 <div className="profile-text">
                     <p className="following-user-text">{this.props.friendData.description}</p>
-                    <button className="following-button">
-                        <i className={"material-icons following-user-icon "}>check_box</i>
-                    </button>
+                    <TimeoutOn timeoutState={this.timeoutState} active={this.state.timeout}/>
                 </div>
             </div>
         )

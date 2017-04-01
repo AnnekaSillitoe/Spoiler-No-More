@@ -1,6 +1,13 @@
 import React from 'react';
 
 class Toggle extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            timeoutDisplay: false
+        }
+    }
+
   render(){
     return (
           <div className={this.props.className}>
