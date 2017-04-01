@@ -21,6 +21,7 @@ import Block from './block.jsx';
 import RetweetNotifications from './retweetnotifications.jsx';
 import NewMessage from './newmessage.jsx';
 import ReplyTweet from './replytweet.jsx';
+import TimeoutFollowing from './timeoutfollowing.jsx';
 import TurnOnRTs from './turnonrts.jsx';
 
 const routes =
@@ -45,6 +46,8 @@ const routes =
     <Route path='/retweetnotifications' component = { RetweetNotifications }/>
     <Route path="/newmessage" component = { NewMessage }/>
     <Route path="/reply" component = { ReplyTweet }/>
+    <Route path='/liststimeout'component = { Timeout }/>
+    <Route path='/followingtimeout'component = { TimeoutFollowing }/>
     <Route path="/turnonrts" component = { TurnOnRTs }/>
   </Route>
 

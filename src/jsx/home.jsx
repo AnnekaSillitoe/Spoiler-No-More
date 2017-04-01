@@ -1,8 +1,6 @@
 import React from 'react';
 import TopBar from './topbar.jsx';
 import BottomBar from './bottombar.jsx';
-import convertTime from '../helpers/converttime.js';
-import ButtonSection from './buttonsection.jsx';
 import Tweets from './tweets.jsx';
 
 class Home extends React.Component{
@@ -29,7 +27,7 @@ class Home extends React.Component{
   render(){
     var tl = this.state.timeline.map((e, i) => {
       return <Tweets tweetData={e} key={i}/>
-    })
+    });
 
     return (
       <div>

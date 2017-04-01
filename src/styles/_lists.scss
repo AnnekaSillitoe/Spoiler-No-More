@@ -43,6 +43,9 @@
   color: $purple-dark;
   padding: 5% 0;
   width: 98%;
+  &-timeout {
+    width: 89%;
+  }
 }
 
 .lists-button {

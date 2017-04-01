@@ -2,8 +2,7 @@ import React from 'react';
 import TopBar from './topbar.jsx';
 import BottomBar from './bottombar.jsx';
 import TopSliderNoLinks from './topslidernolinks.jsx';
-import ListOfLists from './listoflists.jsx';
-import { Link } from 'react-router';
+import TimeoutLists from './timeoutlists.jsx';
 
 class Timeout extends React.Component{
   constructor(props) {
@@ -28,17 +27,17 @@ class Timeout extends React.Component{
 
   render(){
     var listsowned = this.state.lists.map((e, i) => {
-      return <ListOfLists listData={e} key={i}/>
+      return <TimeoutLists listData={e} key={i}/>
     });
 
 
     return (
       <div>
         <TopBar/>
-        <div className="top-text">
-          <p className="select-account">Who would you like to timeout:</p>
+        <div className="top-text top-text-timeout">
+          <p className="select-account-timeout select-account">Who would you like to timeout:</p>
+          <TopSliderNoLinks/>
         </div>
-        <TopSliderNoLinks/>
           <div className="timeout-list">
             {listsowned}
           </div>
