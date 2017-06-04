@@ -24,6 +24,6 @@ class TimeoutLists extends React.Component{
                 <TimeoutOn timeoutState={this.timeoutState} active={this.state.timeout}/>
             </div>
         )}
-};
+}
 
 export default TimeoutLists;
